@@ -1,17 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Layout from '~components/Layout';
 import MainPage from '~pages/MainPage';
+import ReviewPage from '~pages/ReviewPage';
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
-    children: [
-      {
-        path: '/',
-        element: <MainPage />,
-      },
-    ],
+    path: '/',
+    element: <MainPage />,
+  },
+  {
+    path: '/reviews/:id',
+    element: <ReviewPage />,
   },
 ]);
 

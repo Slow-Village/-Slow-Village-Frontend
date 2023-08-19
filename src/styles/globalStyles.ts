@@ -1,8 +1,21 @@
 import { css } from '@emotion/react';
-import emotionReset from 'emotion-reset';
+
+import resetStyles from './resetStyles';
+
+const mobile =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    window.navigator.userAgent
+  );
 
 const globalStyles = css`
-  ${emotionReset}
+  ${resetStyles};
+
+  :root {
+    --safe-top: ${mobile ? 'constant(safe-area-inset-top)' : '24px'};
+    --safe-right: ${mobile ? 'constant(safe-area-inset-right)' : '0px'};
+    --safe-bottom: ${mobile ? 'constant(safe-area-inset-bottom)' : '24px'};
+    --safe-left: ${mobile ? 'constant(safe-area-inset-left)' : '0px'};
+  }
 
   * {
     font-family:
@@ -31,10 +44,27 @@ const globalStyles = css`
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
   }
+
+  html {
+    overflow: hidden;
+    background-color: #eee;
+  }
+
+  body {
+    padding: 0;
+    overflow: hidden scroll;
+  }
+
   #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    overflow: unset;
+    background-color: #fff;
+  }
+
+  button {
+    cursor: pointer;
+    outline: none;
+    border: none;
   }
 `;
 
