@@ -26,6 +26,8 @@ const Card = styled.div`
   border-radius: 30px;
   border: 0.5px solid #b8b8b8;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 const CardContent = styled.div`
