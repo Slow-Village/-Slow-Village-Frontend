@@ -34,3 +34,5 @@ const resizeAndFitRoot = () => {
 resizeAndFitRoot();
 
 window.addEventListener('resize', resizeAndFitRoot);
+
+setInterval(resizeAndFitRoot, 200);
