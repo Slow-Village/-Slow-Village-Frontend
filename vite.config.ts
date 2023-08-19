@@ -5,6 +5,7 @@ import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  base: '/Slow-Village-Frontend',
   plugins: [
     react(),
     svgr({
