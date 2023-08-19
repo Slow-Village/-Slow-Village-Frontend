@@ -1,7 +1,17 @@
-const App = () => {
-  const name = 'Junction Asia 2023';
+import { Global, ThemeProvider } from '@emotion/react';
+import { RouterProvider } from 'react-router-dom';
 
-  return <>HELLO {name}</>;
+import globalStyles from '~styles/globalStyles';
+
+import router from './router';
+
+const App = () => {
+  return (
+    <ThemeProvider theme={{}}>
+      <RouterProvider router={router} />
+      <Global styles={globalStyles} />
+    </ThemeProvider>
+  );
 };
 
 export default App;
