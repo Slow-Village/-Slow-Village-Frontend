@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
+import ChevronLeftIcon from '~assets/icons/chevron_left.svg';
+import PaymentIcon from '~assets/icons/payment.svg';
 import PhoneIcon from '~assets/icons/phone.svg';
+import ProfileIcon from '~assets/icons/profile.svg';
+import QuestionIcon from '~assets/icons/question.svg';
 import grandma_1_reservation from '~assets/images/grandma_1_reservation.png';
 import MoveBackButton from '~components/MoveBackButton';
 
@@ -46,25 +50,58 @@ const CardDescription = styled.div`
   font-size: 13px;
 `;
 
+const SettingItem = styled.div`
+  display: flex;
+  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 12px 22px;
+  svg:first-of-type {
+    margin-right: 12px;
+  }
+  svg:last-of-type {
+    margin-left: auto;
+    transform: rotate(180deg);
+    path {
+      fill: #000000 !important;
+    }
+  }
+`;
+
 const ProfilePage = () => {
   return (
     <>
       <TopBar>
         <MoveBackButton />
       </TopBar>
-      <Title>나의 여행</Title>
+      <Title>My Trip</Title>
       <Card>
         <img src={grandma_1_reservation} alt="grandma_1_reservation" />
         <CardContent>
           <CardContentVertical>
-            <CardTitle>.</CardTitle>
+            <CardTitle>Oksun’s House</CardTitle>
             <CardDescription>2023.08.20-2023.09.20</CardDescription>
-            <CardDescription>2023.08.20-2023.09.20</CardDescription>
+            <CardDescription>부산 수영구</CardDescription>
           </CardContentVertical>
           <PhoneIcon />
         </CardContent>
       </Card>
-      <Title>환경설정</Title>
+      <Title>Setting</Title>
+      <SettingItem>
+        <ProfileIcon />
+        Privacy
+        <ChevronLeftIcon />
+      </SettingItem>
+      <SettingItem>
+        <PaymentIcon />
+        Payment
+        <ChevronLeftIcon />
+      </SettingItem>
+      <SettingItem>
+        <QuestionIcon />
+        Help Service
+        <ChevronLeftIcon />
+      </SettingItem>
     </>
   );
 };
