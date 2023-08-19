@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 import grandma_2 from '~assets/images/grandma_2.png';
 import grandma_2_1 from '~assets/images/grandma_2_1.png';
@@ -91,6 +92,7 @@ const DetailDescription = styled.p`
 `;
 
 const ReviewPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <TopBar>
@@ -142,8 +144,8 @@ const ReviewPage = () => {
         <DetailHeader>Exploring Cheongja&apos;s House</DetailHeader>
         <DetailList>
           <DetailItem>
-            Grandma's house, where she has resided for over 30 years, is filled
-            with warm affection.
+            Grandma&apos;s house, where she has resided for over 30 years, is
+            filled with warm affection.
           </DetailItem>
           <DetailItem>
             There are a total of 2 rooms, and one of them can be separated for
@@ -158,7 +160,9 @@ const ReviewPage = () => {
             provided.
           </DetailItem>
         </DetailList>
-        <Button>Visiting Grandma Park Cheongja</Button>
+        <Button onClick={() => navigate('/confirm-order/asd')}>
+          Visiting Grandma Park Cheongja
+        </Button>
         <DetailDescription>
           Reservation Dates: Aug 20th - Sept 20th | 15,000 won / 1 night
         </DetailDescription>

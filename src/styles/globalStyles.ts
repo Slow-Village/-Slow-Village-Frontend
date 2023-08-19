@@ -59,6 +59,8 @@ const globalStyles = css`
     position: relative;
     overflow: unset;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
   }
 
   button {

@@ -24,7 +24,7 @@ const resizeAndFitRoot = () => {
   container.style.transform = scaleString;
   container.style.transformOrigin = 'top left';
   container.style.width = `${baseWidth}px`;
-  container.style.height = `${baseHeight}px`;
+  container.style.minHeight = `${baseHeight}px`;
 
   document.body.style.height = `${height}px`;
   document.body.style.maxHeight = `${height}px`;

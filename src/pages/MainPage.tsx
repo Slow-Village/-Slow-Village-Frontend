@@ -118,11 +118,7 @@ const Button = styled.button`
   background-color: #ffffff;
   font-size: 14px;
   font-weight: 600;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  align-self: center;
 `;
 
 const MainPage = () => {
@@ -204,11 +200,9 @@ const MainPage = () => {
           </Card>
         </CardList>
       </CardListContainer>
-      <ButtonContainer>
-        <Button onClick={() => navigate('/details/asd')}>
-          Story with Grandma &gt;
-        </Button>
-      </ButtonContainer>
+      <Button onClick={() => navigate('/reviews/asd')}>
+        Story with Grandma &gt;
+      </Button>
     </>
   );
 };
