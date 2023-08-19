@@ -6,6 +6,9 @@ import BellRedIcon from '~assets/icons/bell_red.svg';
 import ProfileIcon from '~assets/icons/profile.svg';
 import SearchIcon from '~assets/icons/search.svg';
 import grandma_1_card from '~assets/images/grandma_1_card.png';
+import grandma_3_card from '~assets/images/grandma_3_card.png';
+import grandma_4_card from '~assets/images/grandma_4_card.png';
+import grandma_5_card from '~assets/images/grandma_5_card.png';
 
 const Header = styled.div`
   display: flex;
@@ -83,6 +86,10 @@ const CardList = styled(Swiper)`
 const Card = styled(SwiperSlide)`
   position: relative;
   cursor: pointer;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const CardContent = styled.div`
@@ -153,14 +160,13 @@ const MainPage = () => {
           }}
         >
           <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_1_card} alt="grandma_1_card" />
+            <img src={grandma_3_card} alt="grandma_3_card" />
             <CardContent>
               <CardTitle>
-                Lived in Busan,
-                <br />
-                for 50 years
+                I have a<br />
+                dream too
               </CardTitle>
-              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+              <CardDesc>Busan Jung-gu / Youngsook Kim</CardDesc>
             </CardContent>
           </Card>
           <Card onClick={() => navigate('/details/asd')}>
@@ -175,25 +181,25 @@ const MainPage = () => {
             </CardContent>
           </Card>
           <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_1_card} alt="grandma_1_card" />
+            <img src={grandma_4_card} alt="grandma_4_card" />
             <CardContent>
               <CardTitle>
-                Lived in Busan,
+                At my house
                 <br />
-                for 50 years
+                Let&apos;s eat pork soup
               </CardTitle>
-              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+              <CardDesc>Sinwol-dong, Busan / Sunja Song</CardDesc>
             </CardContent>
           </Card>
           <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_1_card} alt="grandma_1_card" />
+            <img src={grandma_5_card} alt="grandma_5_card" />
             <CardContent>
               <CardTitle>
-                Lived in Busan,
+                Gukbap master
                 <br />
-                for 50 years
+                Lee Yeong-soon
               </CardTitle>
-              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+              <CardDesc>Seo-gu, Busan / Youngsoon Lee</CardDesc>
             </CardContent>
           </Card>
         </CardList>
