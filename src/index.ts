@@ -8,11 +8,12 @@ const root = createRoot(container);
 root.render(createElement(App));
 
 const resizeAndFitRoot = () => {
-  const baseWidth = 375;
+  const { innerWidth: width, innerHeight: height } = window;
+
+  const baseWidth = Math.max(Math.min(420, width), 375);
   const baseHeight = 812;
   const maxScale = 1.25;
 
-  const { innerWidth: width, innerHeight: height } = window;
   const scale = Math.min(width / baseWidth, height / baseHeight, maxScale);
 
   const scaleString = `scale(${scale})`;

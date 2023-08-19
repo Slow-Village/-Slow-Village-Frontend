@@ -49,6 +49,8 @@ const SearchBar = styled.div`
   > div {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex: 1;
     gap: 14px;
   }
 
