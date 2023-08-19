@@ -17,7 +17,7 @@ const globalStyles = css`
     --safe-left: ${mobile ? 'constant(safe-area-inset-left)' : '0px'};
   }
 
-  * {
+  html {
     font-family:
       'Pretendard Variable',
       Pretendard,
@@ -65,6 +65,7 @@ const globalStyles = css`
     cursor: pointer;
     outline: none;
     border: none;
+    background-color: transparent;
   }
 `;
 
