@@ -1,10 +1,16 @@
 .swiper-slide-prev, .swiper-slide-next {
     transform: scale(0.8) !important;
 }
+.swiper-slide-prev {
+    transform-origin: right;
+}
+.swiper-slide-next {
+    transform-origin: left;
+}
 .swiper-slide-active {
     transform: scale(1) !important;
 }
 
 .swiper-slide {
-    transition: transform 0.3s ease-in-out !important;
+    transition: transform 0.3s ease-in-out, transform-origin 0.3s ease-in-out !important;
 }

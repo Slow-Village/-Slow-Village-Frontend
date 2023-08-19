@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 
@@ -81,6 +82,7 @@ const CardList = styled(Swiper)`
 
 const Card = styled(SwiperSlide)`
   position: relative;
+  cursor: pointer;
 `;
 
 const CardContent = styled.div`
@@ -125,6 +127,8 @@ const ButtonContainer = styled.div`
 
 const MainPage = () => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
+  const navigate = useNavigate();
+
   return (
     <>
       <Header>
@@ -154,7 +158,7 @@ const MainPage = () => {
             type: 'fraction',
           }}
         >
-          <Card>
+          <Card onClick={() => navigate('/details/asd')}>
             <img src={grandma_1_card} alt="grandma_1_card" />
             <CardContent>
               <CardTitle>
@@ -165,13 +169,45 @@ const MainPage = () => {
               <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
             </CardContent>
           </Card>
-          <Card>Slide 2</Card>
-          <Card>Slide 3</Card>
-          <Card>Slide 4</Card>
+          <Card onClick={() => navigate('/details/asd')}>
+            <img src={grandma_1_card} alt="grandma_1_card" />
+            <CardContent>
+              <CardTitle>
+                Lived in Busan,
+                <br />
+                for 50 years
+              </CardTitle>
+              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+            </CardContent>
+          </Card>
+          <Card onClick={() => navigate('/details/asd')}>
+            <img src={grandma_1_card} alt="grandma_1_card" />
+            <CardContent>
+              <CardTitle>
+                Lived in Busan,
+                <br />
+                for 50 years
+              </CardTitle>
+              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+            </CardContent>
+          </Card>
+          <Card onClick={() => navigate('/details/asd')}>
+            <img src={grandma_1_card} alt="grandma_1_card" />
+            <CardContent>
+              <CardTitle>
+                Lived in Busan,
+                <br />
+                for 50 years
+              </CardTitle>
+              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
+            </CardContent>
+          </Card>
         </CardList>
       </CardListContainer>
       <ButtonContainer>
-        <Button>Story with Grandma &gt;</Button>
+        <Button onClick={() => navigate('/details/asd')}>
+          Story with Grandma &gt;
+        </Button>
       </ButtonContainer>
     </>
   );
