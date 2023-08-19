@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+import dongbaekjeon from '~assets/images/dongbaekjeon.png';
 import MoveBackButton from '~components/MoveBackButton';
 
 const TopBar = styled.div`
@@ -25,6 +26,33 @@ const Item = styled.div`
   font-size: 13px;
   font-style: normal;
   margin: 0 22px 8px;
+`;
+
+const PaymentTitle = styled.h2`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: auto 22px 0;
+`;
+
+const PaymentMethod = styled.div`
+  display: flex;
+  margin: 20px 22px 88px;
+  align-items: center;
+  img {
+    margin-right: 16px;
+  }
+`;
+
+const Won = styled.div`
+  font-size: 13px;
+`;
+
+const Edit = styled.div`
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration-line: underline;
+  margin-left: auto;
 `;
 
 const Caution = styled.div`
@@ -59,6 +87,12 @@ const ConfirmOrderPage = () => {
       </Item>
       <Item>Breakfast: Seaweed soup served every morning</Item>
       <Item>Total Amount: 450,000 won (15,000 won per night)</Item>
+      <PaymentTitle>Payment</PaymentTitle>
+      <PaymentMethod>
+        <img src={dongbaekjeon} alt="dongbaekjeon" />
+        <Won>45,000 won</Won>
+        <Edit>Edit</Edit>
+      </PaymentMethod>
       <Caution>
         Cancellation and Refund Policy
         <br />
