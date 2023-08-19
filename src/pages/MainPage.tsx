@@ -24,6 +24,9 @@ const HeaderTitle = styled.h1`
 const HeaderRight = styled.div`
   display: flex;
   gap: 8px;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const SearchBar = styled.div`
@@ -125,7 +128,7 @@ const MainPage = () => {
         <HeaderTitle>Schedule</HeaderTitle>
         <HeaderRight>
           <BellRedIcon />
-          <ProfileIcon />
+          <ProfileIcon onClick={() => navigate('/profile')} />
         </HeaderRight>
       </Header>
       <SearchBar>
