@@ -56,6 +56,7 @@ const SettingItem = styled.div`
   font-size: 14px;
   line-height: 20px;
   padding: 12px 22px;
+  align-items: center;
   svg:first-of-type {
     margin-right: 12px;
   }
@@ -63,7 +64,7 @@ const SettingItem = styled.div`
     margin-left: auto;
     transform: rotate(180deg);
     path {
-      fill: #000000 !important;
+      stroke: #000000 !important;
     }
   }
 `;
@@ -81,7 +82,7 @@ const ProfilePage = () => {
           <CardContentVertical>
             <CardTitle>Oksun’s House</CardTitle>
             <CardDescription>2023.08.20-2023.09.20</CardDescription>
-            <CardDescription>부산 수영구</CardDescription>
+            <CardDescription>Busan Suyeong-gu</CardDescription>
           </CardContentVertical>
           <PhoneIcon />
         </CardContent>
