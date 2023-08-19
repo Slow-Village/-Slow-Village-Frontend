@@ -90,7 +90,7 @@ const ConfirmOrderPage = () => {
       <PaymentTitle>Payment</PaymentTitle>
       <PaymentMethod>
         <img src={dongbaekjeon} alt="dongbaekjeon" />
-        <Won>45,000 won</Won>
+        <Won>450,000 won</Won>
         <Edit>Edit</Edit>
       </PaymentMethod>
       <Caution>

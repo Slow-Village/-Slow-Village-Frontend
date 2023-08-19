@@ -200,7 +200,7 @@ const DetailPage = () => {
               type: 'fraction',
             }}
           >
-            <Card onClick={() => navigate('/details/asd')}>
+            <Card onClick={() => navigate('/reviews/asd')}>
               <img src={grandma_1_2} alt="grandma_1_2" />
               <CardContent>
                 <CardTopDesc>User: hello1289</CardTopDesc>
@@ -211,7 +211,7 @@ const DetailPage = () => {
                 </CardTitle>
               </CardContent>
             </Card>
-            <Card onClick={() => navigate('/details/asd')}>
+            <Card onClick={() => navigate('/reviews/asd')}>
               <img src={grandma_1_2} alt="grandma_1_2" />
               <CardContent>
                 <CardTopDesc>User: hello1289</CardTopDesc>
@@ -222,7 +222,7 @@ const DetailPage = () => {
                 </CardTitle>
               </CardContent>
             </Card>
-            <Card onClick={() => navigate('/details/asd')}>
+            <Card onClick={() => navigate('/reviews/asd')}>
               <img src={grandma_1_2} alt="grandma_1_2" />
               <CardContent>
                 <CardTopDesc>User: hello1289</CardTopDesc>

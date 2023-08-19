@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { addDays, format } from 'date-fns';
+import { DateRange, DayPicker } from 'react-day-picker';
+
 import BellRedIcon from '~assets/icons/bell_red.svg';
 import ProfileIcon from '~assets/icons/profile.svg';
 import SearchIcon from '~assets/icons/search.svg';
@@ -9,6 +12,8 @@ import grandma_1_card from '~assets/images/grandma_1_card.png';
 import grandma_3_card from '~assets/images/grandma_3_card.png';
 import grandma_4_card from '~assets/images/grandma_4_card.png';
 import grandma_5_card from '~assets/images/grandma_5_card.png';
+import address_json from '~assets/data/address.json';
+import { useState } from 'react';
 
 const Header = styled.div`
   display: flex;
@@ -39,6 +44,7 @@ const SearchBar = styled.div`
   gap: 22px;
   border-radius: 500px;
   border: 1px solid #ebebeb;
+  box-sizing: border-box;
   background-color: #ffffff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
 
@@ -46,7 +52,6 @@ const SearchBar = styled.div`
   font-size: 13px;
   font-weight: 600;
   margin: 0 18px;
-
   justify-content: flex-end;
 
   > div {
@@ -128,9 +133,99 @@ const Button = styled.button`
   align-self: center;
 `;
 
+const Select = styled.select`
+  border: 0;
+  outline: none;
+  color: #222222;
+  font-size: 13px;
+  font-weight: 600;
+`
+
+const Option = styled.option`
+  border-radius: 500px;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  color: #222222;
+  font-size: 13px;
+  font-weight: 600;
+`
+
+const DateBlock = styled.span `
+  min-width : 100px;
+`
+
+const CustomDayPicker = styled(DayPicker)`
+  position: absolute;
+  top: 15%;
+  left: 2%;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  z-index: 999;
+  
+  .rdp-caption {
+    justify-content: center;
+  }
+  .rdp-caption_label {
+    font-size: 16px;
+    margin-top: 6px;
+  }
+  .rdp-nav {
+    margin-top: 13px;
+    button[name="previous-month"] {
+      width: 23px;
+      height: 23px;
+    }
+    button[name="next-month"] {
+      width: 23px;
+      height: 23px;
+    }
+  }
+  .react-datepicker__navigation--next {
+    background: url(../images/rightArrow.png) no-repeat;
+    border: none;
+}
+`
+
+
+type Address = {
+  address: Array<GuAddress>;
+}
+
+type GuAddress = {
+  eng_name: string;
+  kor_name: string;
+}
+
+const pastMonth = new Date();
+
 const MainPage = () => {
   const navigate = useNavigate();
+  const address: Address = address_json;
+  let footer = <p></p>;
+  const [currentAddress, setCurrentAddress] = useState("Gangseo-gu");
+  
+  const [calendarSwitch, setCalendarSwitch] = useState(false);
+  const defaultSelected: DateRange = {
+    from: pastMonth,
+    to: addDays(pastMonth, 4)
+  };
+  const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
+  // if (range?.from) {
+  //   if (!range.to) {
+  //     footer = <p>{format(range.from, 'PPP')}</p>;
+  //   } else if (range.to) {
+  //     footer = (
+  //       <p>
+  //         {format(range.from, 'PPP')}–{format(range.to, 'PPP')}
+  //       </p>
+  //     );
+  //   }
+  // }
 
+  const handleChangeAddress = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrentAddress(event.target.value);
+  }
   return (
     <>
       <Header>
@@ -142,11 +237,32 @@ const MainPage = () => {
       </Header>
       <SearchBar>
         <div>
-          <span>Oct 18-Nov 22</span>
+          <DateBlock onClick={() => setCalendarSwitch(!calendarSwitch)}>{range !== undefined && range.from !== undefined ? format(range.from, 'MMM dd') : ""} - {range !== undefined && range.to !== undefined ? format(range.to, 'MMM dd') : ""}</DateBlock>
+          {
+            calendarSwitch ? <CustomDayPicker
+            mode="range"
+            defaultMonth={pastMonth}
+            selected={range}
+            footer={footer}
+            onSelect={setRange}
+            showOutsideDays
+          /> : ""
+          }
           <Divider />
-          <span>Songdo, Busan</span>
+          <Select value={currentAddress} onChange={handleChangeAddress}>
+            {
+              address.address.map((gu) => {
+                return (<Option value={gu.eng_name} >{gu.eng_name}</Option>);
+              })
+            }
+          </Select>
           <Divider />
-          <span>1</span>
+          <Select>
+            <Option value="1">1</Option>
+            <Option value="2">2</Option>
+            <Option value="3">3</Option>
+            <Option value="4">4</Option>
+          </Select>
         </div>
         <SearchIcon />
       </SearchBar>

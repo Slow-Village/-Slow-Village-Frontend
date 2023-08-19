@@ -14,3 +14,13 @@
 .swiper-slide {
     transition: transform 0.3s ease-in-out, transform-origin 0.3s ease-in-out !important;
 }
+
+select::-ms-expand { 
+	display: none;
+}
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

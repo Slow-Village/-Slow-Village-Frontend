@@ -10,6 +10,10 @@ const mobile =
 const globalStyles = css`
   ${resetStyles};
 
+  * {
+    --rdp-accent-color: #F4BB40;
+    --rdp-background-color: rgba(244, 187, 64, 0.5);
+  }
   :root {
     --safe-top: max(${mobile ? 'env(safe-area-inset-top)' : '24px'}, 24px);
     --safe-right: ${mobile ? 'env(safe-area-inset-right)' : '0px'};
@@ -20,7 +24,9 @@ const globalStyles = css`
     --safe-left: ${mobile ? 'env(safe-area-inset-left)' : '0px'};
   }
 
-  html {
+  html,
+  select,
+  option {
     font-family:
       'Pretendard Variable',
       Pretendard,

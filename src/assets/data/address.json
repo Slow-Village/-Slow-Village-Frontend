@@ -1,0 +1,68 @@
+{
+    "address": [
+        {
+            "eng_name": "Gangseo-gu",
+            "kor_name": "강서구"
+        },
+        {
+            "eng_name": "Geumjeong-gu",
+            "kor_name": "금정구"
+        },
+        {
+            "eng_name": "Gijang-gun",
+            "kor_name": "기장군"
+        },
+        {
+            "eng_name": "Nam-gu",
+            "kor_name": "남구"
+        },
+        {
+            "eng_name": "Dong-gu",
+            "kor_name": "동구"
+        },
+        {
+            "eng_name": "Dongnae-gu",
+            "kor_name": "동래구"
+        },
+        {
+            "eng_name": "Busanjin-gu",
+            "kor_name": "부산진구"
+        },
+        {
+            "eng_name": "Buk-gu",
+            "kor_name": "북구"
+        },
+        {
+            "eng_name": "Sasang-gu",
+            "kor_name": "사상구"
+        },
+        {
+            "eng_name": "Saha-gu",
+            "kor_name": "사하구"
+        },
+        {
+            "eng_name": "Seo-gu",
+            "kor_name": "서구"
+        },
+        {
+            "eng_name": "Suyeong-gu",
+            "kor_name": "수영구"
+        },
+        {
+            "eng_name": "Yeonje-gu",
+            "kor_name": "연제구"
+        },
+        {
+            "eng_name": "Youngdo-gu",
+            "kor_name": "영도구"
+        },
+        {
+            "eng_name": "Jung-gu",
+            "kor_name": "중구"
+        },
+        {
+            "eng_name": "Haeundae-gu",
+            "kor_name": "해운대구"
+        }
+    ]
+}

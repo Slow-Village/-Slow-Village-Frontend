@@ -7,6 +7,7 @@ import router from './router';
 
 import 'swiper/css';
 import '~styles/swiper.css';
+import 'react-day-picker/dist/style.css';
 
 const App = () => {
   return (
