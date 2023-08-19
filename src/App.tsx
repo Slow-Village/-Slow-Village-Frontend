@@ -5,6 +5,9 @@ import globalStyles from '~styles/globalStyles';
 
 import router from './router';
 
+import 'swiper/css';
+import '~styles/swiper.css';
+
 const App = () => {
   return (
     <ThemeProvider theme={{}}>

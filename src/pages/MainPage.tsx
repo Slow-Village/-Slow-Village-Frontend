@@ -1,16 +1,11 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperClass } from 'swiper/types';
 
 import BellRedIcon from '~assets/icons/bell_red.svg';
 import ProfileIcon from '~assets/icons/profile.svg';
 import SearchIcon from '~assets/icons/search.svg';
 import grandma_1_card from '~assets/images/grandma_1_card.png';
-
-import 'swiper/css';
-import '~styles/swiper.css';
 
 const Header = styled.div`
   display: flex;
@@ -122,7 +117,6 @@ const Button = styled.button`
 `;
 
 const MainPage = () => {
-  const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
   const navigate = useNavigate();
 
   return (
@@ -146,7 +140,6 @@ const MainPage = () => {
       </SearchBar>
       <CardListContainer>
         <CardList
-          onSwiper={setSwiperRef}
           slidesPerView={1}
           centeredSlides
           spaceBetween={10}
