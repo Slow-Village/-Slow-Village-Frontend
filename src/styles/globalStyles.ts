@@ -11,9 +11,12 @@ const globalStyles = css`
   ${resetStyles};
 
   :root {
-    --safe-top: ${mobile ? 'env(safe-area-inset-top)' : '24px'};
+    --safe-top: max(${mobile ? 'env(safe-area-inset-top)' : '24px'}, 24px);
     --safe-right: ${mobile ? 'env(safe-area-inset-right)' : '0px'};
-    --safe-bottom: ${mobile ? 'env(safe-area-inset-bottom)' : '24px'};
+    --safe-bottom: max(
+      ${mobile ? 'env(safe-area-inset-bottom)' : '24px'},
+      24px
+    );
     --safe-left: ${mobile ? 'env(safe-area-inset-left)' : '0px'};
   }
 
