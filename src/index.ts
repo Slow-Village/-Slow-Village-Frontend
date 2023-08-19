@@ -14,7 +14,10 @@ const resizeAndFitRoot = () => {
   const baseHeight = 812;
   const maxScale = 1.25;
 
-  const scale = Math.min(width / baseWidth, height / baseHeight, maxScale);
+  const scale = Math.max(
+    Math.min(width / baseWidth, height / baseHeight, maxScale),
+    1
+  );
 
   const scaleString = `scale(${scale})`;
 
@@ -25,7 +28,7 @@ const resizeAndFitRoot = () => {
   container.style.transform = scaleString;
   container.style.transformOrigin = 'top left';
   container.style.width = `${baseWidth}px`;
-  container.style.minHeight = `${baseHeight}px`;
+  container.style.minHeight = `${height / scale}px`;
 
   document.body.style.height = `${height}px`;
   document.body.style.maxHeight = `${height}px`;
