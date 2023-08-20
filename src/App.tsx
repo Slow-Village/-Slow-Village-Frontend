@@ -1,6 +1,6 @@
 import { Global, ThemeProvider } from '@emotion/react';
 import { RouterProvider } from 'react-router-dom';
-
+import {RecoilRoot} from "recoil";
 import globalStyles from '~styles/globalStyles';
 
 import router from './router';
@@ -12,8 +12,10 @@ import 'react-day-picker/dist/style.css';
 const App = () => {
   return (
     <ThemeProvider theme={{}}>
+      <RecoilRoot>
       <RouterProvider router={router} />
       <Global styles={globalStyles} />
+      </RecoilRoot>
     </ThemeProvider>
   );
 };

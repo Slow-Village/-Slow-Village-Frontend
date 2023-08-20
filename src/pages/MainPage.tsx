@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { useCallback, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,7 +15,8 @@ import grandma_3_card from '~assets/images/grandma_3_card.png';
 import grandma_4_card from '~assets/images/grandma_4_card.png';
 import grandma_5_card from '~assets/images/grandma_5_card.png';
 import address_json from '~assets/data/address.json';
-import { useState } from 'react';
+
+import {FilterState} from '~store/FilterState'
 
 const Header = styled.div`
   display: flex;
@@ -187,6 +190,9 @@ const CustomDayPicker = styled(DayPicker)`
 }
 `
 
+const Search = styled.a `
+  cursor: pointer;
+`
 
 type Address = {
   address: Array<GuAddress>;
@@ -203,29 +209,34 @@ const MainPage = () => {
   const navigate = useNavigate();
   const address: Address = address_json;
   let footer = <p></p>;
+
+  const [filters, setFilters] = useRecoilState(FilterState);
   const [currentAddress, setCurrentAddress] = useState("Gangseo-gu");
-  
+  const [currentHeadcount, setCurrentHeadcount] = useState(1);
+
   const [calendarSwitch, setCalendarSwitch] = useState(false);
   const defaultSelected: DateRange = {
     from: pastMonth,
     to: addDays(pastMonth, 4)
   };
   const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
-  // if (range?.from) {
-  //   if (!range.to) {
-  //     footer = <p>{format(range.from, 'PPP')}</p>;
-  //   } else if (range.to) {
-  //     footer = (
-  //       <p>
-  //         {format(range.from, 'PPP')}–{format(range.to, 'PPP')}
-  //       </p>
-  //     );
-  //   }
-  // }
 
   const handleChangeAddress = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentAddress(event.target.value);
   }
+
+  const handleHeadcount = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrentHeadcount(parseInt(event.target.value));
+  }
+
+  const handleFilter = () => {
+    setFilters((filters: any) => ({
+      ...filters,
+      address: currentAddress,
+      headcount: currentHeadcount
+    }));
+  };
+
   return (
     <>
       <Header>
@@ -257,14 +268,16 @@ const MainPage = () => {
             }
           </Select>
           <Divider />
-          <Select>
+          <Select value={currentHeadcount} onChange={handleHeadcount}>
             <Option value="1">1</Option>
             <Option value="2">2</Option>
             <Option value="3">3</Option>
             <Option value="4">4</Option>
           </Select>
         </div>
-        <SearchIcon />
+        <Search onClick={handleFilter}>
+          <SearchIcon />
+        </Search>
       </SearchBar>
       <CardListContainer>
         <CardList

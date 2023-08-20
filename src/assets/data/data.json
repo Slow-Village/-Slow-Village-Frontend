@@ -1,0 +1,149 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "title": "I have a dream too",
+            "address": "Jung-gu",
+            "first_name": "Youngsook",
+            "last_name": "Kim",
+            "image": "images/1-1.png",
+            "contents": [
+                {
+                    "type": "text",
+                    "content": "Hello, I am Kim Young-sook, a grandmother who loves knitting. After living as a haenyeo for more than 30 years, I am running a new knitting shop. If you come to my house, I will give you knitting lessons.Come and enjoy a variety of experiences, including scarves, hats, and cup holders.\n\nMy dream is to have many young friends experience knitting culture through a wonderful knitting shop.\n\nMy house is an old traditional Korean house.It may be inconvenient at times, but I'm the type of person who cleans neatly, so there won't be any inconvenience when you're with me.\n\nI like people, so when you come, I want to talk with you. It would be nice if we could talk together."
+                },
+                {
+                    "type": "image",
+                    "content": "images/1-2.png"
+                },
+                {
+                    "type": "text",
+                    "content": "Our house can be a bit cold, so make sure to bring a jumper. It's chilly in the evening. When a fire is made in a furnace, the floor is warm, but the air is cold.\n\nYou need to bring your own toiletries. We provide towels and breakfast.\n\nBreakfast is sometimes warm seaweed soup, and the menu I eat is breakfast, so please tell me if there is something you want to eat. I can do it too.I have to go to the hospital once a week.\n\nI can do it by learning how to use a cell phone and how to catch a taxi through government education, but I still have a little difficulty.\n\nI would like help with that part\n\nWhen you come to my house, I will take good care of you, so many people come. I will take care of you.\n\nTake good care of me, friends, I'll tell you about the best restaurants in Busan. My friend's delicious soup restaurant is nearby, so that's the real soup.\n\nSo goodbye.\nSee you in Busan."
+                }
+            ],
+            "features": [
+                "Grandma's house, where she has resided for over 30 years, is filled with warm affection.",
+                "There are a total of 2 rooms, and one of them can be separated for guest use.",
+                "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
+                "The bathroom features a bidet, and a washing machine is also provided."
+            ],
+            "reviews": []
+        },
+        {
+            "id": 2,
+            "title": "Lived in Busan for 50 years",
+            "address": "Namchun-dong",
+            "first_name": "Oksun",
+            "last_name": "Kim",
+            "image": "images/2-1.png",
+            "contents": [
+                {
+                    "type": "text",
+                    "content": "Hello there! I'm Kim Ok-soon. From a young age until now, I've been living and breathing in Busan for decades, becoming a true Busan gem. You won't believe how my heart skips a beat and my energy surges when I hear someone whispering in the Busan dialect. It's like the feeling when you sit down and stand up after savoring a piping hot bowl of soup - that same warmth spreads through you. Just like the tender broth, looking at others with the same Busan heart and speaking in our dialect warms my spirit.\n\nBusan is a city with its head held high and feet that move quickly. It's not just a phrase but something I've felt firsthand, as if I've touched it with my own hands. The elderly folks on the streets greet you with smiles, making the whole place feel like a village where everyone smiles like sunshine. People who greet each other respectfully wherever they go - when translated into the Busan dialect, it's even more intriguing and feels like a fragrant flower blooming in your heart.\nWalking along Busan's coastline, I've enjoyed the proud beauty of our unique scenery, often accompanied by the bright smiles of travelers. With the sun shining over the white sandy beach, the shadows spreading out, it's as if the charm of Busan that I've always held dear becomes yet another picturesque landscape. I feel fortunate to have been born a Busanite. Living confidently in such a charming city fills me with joy."
+                },
+                {
+                    "type": "image",
+                    "content": "images/2-2.png"
+                },
+                {
+                    "type": "text",
+                    "content": "In my youth, I had dreams about Busan, but now, as a true Busan native, I'm grateful to experience its beauty firsthand and share happy times. As I tell stories about my little hometown of Busan, I hope to spread the flames of Busan's love to others. I want to continue cherishing Busan, sharing its beauty with others, and embracing the moments that lie ahead. I'll never forget that Busan is both my proud hometown and an integral part of my life."
+                }
+            ],
+            "features": [
+                "Grandma's house, where she has resided for over 30 years, is filled with warm affection.",
+                "There are a total of 2 rooms, and one of them can be separated for guest use.",
+                "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
+                "The bathroom features a bidet, and a washing machine is also provided."
+            ],
+            "reviews": []
+        },
+        {
+            "id": 3,
+            "title": "At my house Let's eat pork soup",
+            "address": "Sinwol-dong",
+            "first_name": "Sunja",
+            "last_name": "Song",
+            "image": "images/3-1.png",
+            "contents": [
+                {
+                    "type": "text",
+                    "content": "Sunja, a warm-hearted grandmother, had a unique passion that lit up her days: pork soup. She lived in a cozy cottage nestled on the outskirts of a charming village, a place she had called home for decades. Lillian's love for pork soup wasn't merely about its flavors; it was deeply intertwined with her cherished memories.\nSunja's early days were colored with the hues of her grandmother's kitchen, where simmering pots and hearty aromas were a constant presence. Every Sunday, her grandmother would prepare a hearty pork soup, rich with herbs and love. It was a tradition that lingered in Sunja's heart long after her grandmother's passing.\nYears later, with silver hair and twinkling eyes, Sunja decided to honor her grandmother's memory by opening \"Lily's Soupery,\" a quaint eatery dedicated to comfort and connection. The centerpiece of her menu was, of course, her beloved pork soup.\nThe aroma of simmering pork and herbs wafted through Lily's Soupery, drawing locals and visitors alike. Lillian's gentle smile and welcoming demeanor turned her eatery into a gathering place for the community, a space where stories were shared over bowls of soup and hearts were warmed as much as the bellies.\nLillian's pork soup recipe was a closely guarded secret. She sourced the freshest ingredients from local farmers, carefully selecting each component to ensure the perfect balance of flavors. Her kitchen was a dance of precise measurements and nostalgic touches, the echo of her grandmother guiding her hands."
+                },
+                {
+                    "type": "image",
+                    "content": "images/3-2.png"
+                },
+                {
+                    "type": "text",
+                    "content": "One chilly afternoon, I had the privilege of stepping into Sunja's Soupery. The air was alive with the melody of sizzling pans and the comforting notes of nostalgia. Sunja, wearing a well-worn apron, welcomed me with a knowing smile. \"Would you like to learn the art of making pork soup?\" she asked, her eyes twinkling.\nI eagerly accepted her invitation and donned an apron. As Sunja guided me through the process, her hands moved with a grace that only comes from years of practice. We diced vegetables and seared pork, the fragrant steam filling the air. She shared stories of her grandmother, of childhood adventures, and the moments that shaped her love for pork soup."
+                }
+            ],
+            "features": [
+                "Grandma's house, where she has resided for over 30 years, is filled with warm affection.",
+                "There are a total of 2 rooms, and one of them can be separated for guest use.",
+                "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
+                "The bathroom features a bidet, and a washing machine is also provided."
+            ],
+            "reviews": []
+        },
+        {
+            "id": 4,
+            "title": "Gukbap master Lee Yeong-soon",
+            "address": "Seo-gu",
+            "first_name": "Yeongsoon",
+            "last_name": "Lee",
+            "image": "images/4-1.png",
+            "contents": [
+                {
+                    "type": "text",
+                    "content": "Grandma Lee Yeong-soon, a beacon of warmth and tradition, spent three decades perfecting her beloved rice soup. Nestled in a quaint village, her small kitchen became a haven of comfort and community. Her story was one of dedication, love, and a deep connection to her roots.\nIt all began when Grandma Yeong-soon inherited an ancient recipe from her own grandmother. This recipe, a simple yet profound one for rice soup, had been passed down through generations. With a twinkle in her eye, she embarked on a culinary journey that would span 30 years.\nEvery morning, as the sun painted the sky with hues of dawn, Grandma Yeong-soon could be found in her kitchen, preparing her signature rice soup. She sourced the finest local ingredients - tender rice, fragrant herbs, and fresh vegetables - with meticulou care. The process was a symphony of chopping, simmering, and seasoning, guided by a lifetime of intuition and experience.\nAs the steam from the pot filled her cozy kitchen, memories of her childhood resurfaced. She recalled the times spent watching her own grandmother prepare the same soup, the laughter that echoed through the kitchen, and the stories that were shared over meals. In Grandma Yeong-soon's hands, the recipe was more than just ingredients; it was a tangible link to her heritage.\nThe village soon caught wind of Grandma Yeong-soon's rice soup, and her kitchen became a pilgrimage site for both locals and travelers. The fragrant aroma that enveloped her home was an irresistible invitation, and people from all walks of life came to experience the magic of her soup and the warmth of her presence."
+                },
+                {
+                    "type": "image",
+                    "content": "images/4-2.png"
+                },
+                {
+                    "type": "text",
+                    "content": "However, Grandma Yeong-soon's rice soup wasn't just about the taste; it was about the connections it fostered. Her kitchen table became a communal space where stories were exchanged, friendships were formed, and hearts were nourished as much as bodies. Every bowl of soup was infused with the love and wisdom she had gathered over the years.\nAs time marched on, Grandma Yeong-soon's kitchen became a treasure trove of tales. She had witnessed weddings, birthdays, and even farewells, each event marked by a hearty pot of rice soup. Her kitchen walls were adorned with photos of smiling faces, a testament to the bonds she had forged."
+                }
+            ],
+            "features": [
+                "Grandma's house, where she has resided for over 30 years, is filled with warm affection.",
+                "There are a total of 2 rooms, and one of them can be separated for guest use.",
+                "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
+                "The bathroom features a bidet, and a washing machine is also provided."
+            ],
+            "reviews": []
+        },
+        {
+            "id": 5,
+            "title": "Busan is very good welcome",
+            "address": "Seo-gu",
+            "first_name": "Chungja",
+            "last_name": "Park",
+            "image": "images/5-1.png",
+            "contents": [
+                {
+                    "type": "text",
+                    "content": "\"Busan\" by Park Chung-ja is a poignant tale that captures the essence of a coastal city's transformative journey. Set against the backdrop of Busan, a bustling port city in South Korea, the story unfolds through the eyes of its diverse inhabitants.\nIn the midst of bustling markets and towering ships, Park Chung-ja weaves a tapestry of characters who embody the spirit of Busan. From fishermen who brave the unpredictable sea to merchants who barter with shrewdness, each person represents a facet of the city's vibrant personality.\nAt the heart of the narrative is Sunwoo, a young boy born into a fishing family. His dreams are entwined with the ocean's tides, and his heart beats to the rhythm of the waves. As the story progresses, Sunwoo's journey mirrors the transformation of Busan itself – from a modest fishing village to a bustling metropolis.\nThe novel vividly portrays the evolution of Busan as it adapts to the changing currents of time. The once-quiet shores become a hub of industry and commerce, reflecting the city's rapid growth. Yet amidst the chaos, the narrative never loses sight of the human connections that define Busan's soul.\nAs characters intersect and paths intertwine, "Busan" delves into the themes of resilience, sacrifice, and the indomitable spirit of its people. Amid economic shifts and wartime challenges, the characters exemplify the unwavering determination to carve a better future for their families and community.\nThrough the ebbs and flows of life, "Busan" showcases how the city becomes more than just a backdrop – it becomes a living, breathing entity that shapes the destinies of its inhabitants. The city's physical transformation mirrors the personal growth of its characters, each one marked by triumphs and tribulations.\nPark Chung-ja's prose paints a vivid portrait of Busan's landscape, culture, and traditions. From the narrow alleys of the old city to the modern skyscrapers that pierce the sky, every detail is meticulously captured, providing readers with a sensory immersion into the heart of Busan."
+                },
+                {
+                    "type": "image",
+                    "content": "images/5-2.png"
+                },
+                {
+                    "type": "text",
+                    "content": "The story is a tribute to the resilience of a city that has weathered storms, both literal and metaphorical. Just as the sea's tides are unpredictable, so too are the twists and turns of life. Yet, like the determined fishermen who venture out each day, the characters of \"Busan\" navigate challenges with grit and hope.\nAs the final pages of \"Busan\" are turned, readers are left with a sense of nostalgia, reflecting on the city's journey and the lives it has touched."
+                }
+            ],
+            "features": [
+                "Grandma's house, where she has resided for over 30 years, is filled with warm affection.",
+                "There are a total of 2 rooms, and one of them can be separated for guest use.",
+                "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
+                "The bathroom features a bidet, and a washing machine is also provided."
+            ],
+            "reviews": []
+        }
+    ]
+}

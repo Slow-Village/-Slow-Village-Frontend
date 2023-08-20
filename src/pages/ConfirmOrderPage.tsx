@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
+import { useState, useRef } from 'react';
+
+import Sheet from 'react-modal-sheet';
 
 import dongbaekjeon from '~assets/images/dongbaekjeon.png';
+import shinhancard from '~assets/images/shinhancard2.png';
+import creditcard from '~assets/images/creditcard.png';
 import MoveBackButton from '~components/MoveBackButton';
 
 const TopBar = styled.div`
@@ -31,13 +36,13 @@ const Item = styled.div`
 const PaymentTitle = styled.h2`
   font-size: 14px;
   font-weight: 600;
-  line-height: 20px;
-  margin: auto 22px 0;
+  line-height: 16px;
+  margin: 24px 22px 0;
 `;
 
 const PaymentMethod = styled.div`
   display: flex;
-  margin: 20px 22px 88px;
+  margin: 20px 22px 8px;
   align-items: center;
   img {
     margin-right: 16px;
@@ -45,7 +50,12 @@ const PaymentMethod = styled.div`
 `;
 
 const Won = styled.div`
+  margin-left: auto;
   font-size: 13px;
+`;
+const Text = styled.div`
+  font-size: 13px;
+  font-weight: 400;
 `;
 
 const Edit = styled.div`
@@ -74,25 +84,25 @@ const Button = styled.button`
   margin: 34px 22px var(--safe-bottom);
 `;
 
+const CustomSheet = styled(Sheet)`
+  display: block;
+`
+
 const ConfirmOrderPage = () => {
+  const [isOpen, setOpen] = useState(false);
+  const modalPointRef = useRef(null);
   return (
     <>
       <TopBar>
         <MoveBackButton />
       </TopBar>
-      <Title>Confirm Trip</Title>
+      <Title ref={modalPointRef}>Confirm Trip</Title>
       <TripTitle>Oksun&apos;s House</TripTitle>
       <Item>
         Schedule: <u>2023.08.20 - 2023.09.20 / 30 nights</u>
       </Item>
       <Item>Breakfast: Seaweed soup served every morning</Item>
       <Item>Total Amount: 450,000 won (15,000 won per night)</Item>
-      <PaymentTitle>Payment</PaymentTitle>
-      <PaymentMethod>
-        <img src={dongbaekjeon} alt="dongbaekjeon" />
-        <Won>450,000 won</Won>
-        <Edit>Edit</Edit>
-      </PaymentMethod>
       <Caution>
         Cancellation and Refund Policy
         <br />
@@ -106,7 +116,40 @@ const ConfirmOrderPage = () => {
         <br />- the day of the trip or before the tour starts: Refund 50% of
         total price
       </Caution>
-      <Button>Confirm to Pay</Button>
+      <CustomSheet
+       isOpen={isOpen} 
+       onClose={() => setOpen(false)} 
+       mountPoint={modalPointRef.current !== null ? modalPointRef.current : document.body}
+       snapPoints={[400, 0]}
+      >
+        <Sheet.Container>
+          <Sheet.Header />
+          <Sheet.Content>
+            <TripTitle>450,000 WON</TripTitle>
+            <PaymentTitle>Payment</PaymentTitle>
+            <PaymentMethod >
+              <img src={dongbaekjeon} alt="dongbaekjeon" />
+              <Won>427,500 WON</Won>
+              {/* <Edit>Edit</Edit> */}
+            </PaymentMethod>
+            <PaymentMethod >
+              <img src={shinhancard} alt="shinhancard" />
+              <Won>450,000 WON</Won>
+              {/* <Edit>Edit</Edit> */}
+            </PaymentMethod>
+            <PaymentTitle>New Payment Method</PaymentTitle>
+            <PaymentMethod >
+              <img src={creditcard} alt="creditcard" />
+              <Text>Add New Credit Card</Text>
+              {/* <Won>427,500 WON</Won> */}
+              {/* <Edit>Edit</Edit> */}
+            </PaymentMethod>
+            
+          </Sheet.Content>
+        </Sheet.Container>
+        <Sheet.Backdrop />
+      </CustomSheet>
+      <Button onClick={() => setOpen(true)}>Confirm to Pay</Button>
     </>
   );
 };
