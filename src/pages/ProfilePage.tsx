@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import data from '~assets/data/data.json';
@@ -85,6 +86,8 @@ const ProfilePage = () => {
   const reservation = useRecoilValue(ReservationState);
   const reservedArticle =
     reservation && data.items.find((item) => item.id === reservation.id)!;
+  const navigate = useNavigate();
+
   return (
     <>
       <TopBar>
@@ -93,7 +96,7 @@ const ProfilePage = () => {
       <Title>My Trip</Title>
       {!reservedArticle && <None>None</None>}
       {reservedArticle && (
-        <Card>
+        <Card onClick={() => navigate(`/details${reservation.id}`)}>
           <img
             src={`${import.meta.env.BASE_URL}/${reservedArticle.image}`}
             alt={reservedArticle.image}

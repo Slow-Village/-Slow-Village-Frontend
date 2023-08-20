@@ -116,13 +116,18 @@ const ReviewPage = () => {
         <Summary>{review.sub_title}</Summary>
 
         {review.contents.map((content) => {
-            if (content.type === 'text') {
-              return <Content>{content.content}</Content>
-            }
-            if (content.type === 'image') {
-              return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
-            }
-          })
+          if (content.type === 'text') {
+            return <Content>{content.content}</Content>;
+          }
+          if (content.type === 'image') {
+            return (
+              <img
+                src={`${import.meta.env.BASE_URL}/${content.content}`}
+                alt={content.content}
+              />
+            );
+          }
+          return null;
         })}
         <DetailHeader>Exploring {article.first_name}&apos;s House</DetailHeader>
         <DetailList>

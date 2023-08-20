@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { differenceInDays, format } from 'date-fns';
 import { useState, useRef } from 'react';
 import Sheet from 'react-modal-sheet';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useNavigation, useParams } from 'react-router-dom';
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 
 import data from '~assets/data/data.json';
@@ -112,6 +112,9 @@ const ConfirmOrderPage = () => {
     navigate('/profile');
   };
 
+  const days = differenceInDays(filters.range_to, filters.range_from);
+  const price = days * 15000;
+
   return (
     <>
       <TopBar>
@@ -123,17 +126,12 @@ const ConfirmOrderPage = () => {
         Schedule:{' '}
         <u>
           {format(filters.range_from, 'yyyy. MM. dd')} -{' '}
-          {format(filters.range_to, 'yyyy. MM. dd')} /{' '}
-          {differenceInDays(filters.range_to, filters.range_from)} nights
+          {format(filters.range_to, 'yyyy. MM. dd')} / {days} nights
         </u>
       </Item>
       <Item>Breakfast: Seaweed soup served every morning</Item>
       <Item>
-        Total Amount:{' '}
-        {(
-          differenceInDays(filters.range_to, filters.range_from) * 15000
-        ).toLocaleString()}{' '}
-        won (15,000 won per night)
+        Total Amount: {price.toLocaleString()} won (15,000 won per night)
       </Item>
       <Caution>
         Cancellation and Refund Policy
@@ -159,28 +157,16 @@ const ConfirmOrderPage = () => {
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content>
-            <TripTitle>450,000 WON</TripTitle>
+            <TripTitle>{price.toLocaleString()} WON</TripTitle>
             <PaymentTitle>Payment</PaymentTitle>
             <PaymentMethod onClick={() => handleReservation()}>
               <img src={dongbaekjeon} alt="dongbaekjeon" />
-              <Won>
-                {(
-                  differenceInDays(filters.range_to, filters.range_from) *
-                  15000 *
-                  0.95
-                ).toLocaleString()}{' '}
-                WON
-              </Won>
+              <Won>{(price * 0.95).toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentMethod onClick={() => handleReservation()}>
               <img src={shinhancard} alt="shinhancard" />
-              <Won>
-                {(
-                  differenceInDays(filters.range_to, filters.range_from) * 15000
-                ).toLocaleString()}{' '}
-                WON
-              </Won>
+              <Won>{price.toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentTitle>New Payment Method</PaymentTitle>

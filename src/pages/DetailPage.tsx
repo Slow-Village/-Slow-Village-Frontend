@@ -176,13 +176,18 @@ const DetailPage = () => {
         </Summary>
 
         {article.contents.map((content) => {
-            if (content.type === 'text') {
-              return <Content>{content.content}</Content>
-            }
-            if (content.type === 'image') {
-              return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
-            }
-          })
+          if (content.type === 'text') {
+            return <Content>{content.content}</Content>;
+          }
+          if (content.type === 'image') {
+            return (
+              <img
+                src={`${import.meta.env.BASE_URL}/${content.content}`}
+                alt={content.content}
+              />
+            );
+          }
+          return null;
         })}
         <CardListHeader>Stay stories</CardListHeader>
         <CardListContainer>
@@ -203,7 +208,7 @@ const DetailPage = () => {
                   />
                   <CardContent>
                     <CardTopDesc>
-                      User: user{Math.random().toString().slice(2)}
+                      User: user{Math.random().toString().slice(2, 6)}
                     </CardTopDesc>
                     <CardTitle>{review.title}</CardTitle>
                   </CardContent>

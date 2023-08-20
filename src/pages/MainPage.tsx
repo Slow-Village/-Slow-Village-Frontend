@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { DateRange, DayPicker } from 'react-day-picker';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
 import address_json from '~assets/data/address.json';
 import data from '~assets/data/data.json';
@@ -208,6 +208,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const address: Address = address_json;
   const footer = <p />;
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   const [filters, setFilters] = useRecoilState(FilterState);
   const [currentAddress, setCurrentAddress] = useState('All');
@@ -301,6 +302,7 @@ const MainPage = () => {
           pagination={{
             type: 'fraction',
           }}
+          onSwiper={setSwiper}
         >
           {data.items
             .filter(
@@ -332,52 +334,13 @@ const MainPage = () => {
                 </Card>
               );
             })}
-          {/* <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_3_card} alt="grandma_3_card" />
-            <CardContent>
-              <CardTitle>
-                I have a<br />
-                dream too
-              </CardTitle>
-              <CardDesc>Busan Jung-gu / Youngsook Kim</CardDesc>
-            </CardContent>
-          </Card>
-          <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_1_card} alt="grandma_1_card" />
-            <CardContent>
-              <CardTitle>
-                Lived in Busan,
-                <br />
-                for 50 years
-              </CardTitle>
-              <CardDesc>Namchun-dong, Busan / Oksun Kim</CardDesc>
-            </CardContent>
-          </Card>
-          <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_4_card} alt="grandma_4_card" />
-            <CardContent>
-              <CardTitle>
-                At my house
-                <br />
-                Let&apos;s eat pork soup
-              </CardTitle>
-              <CardDesc>Sinwol-dong, Busan / Sunja Song</CardDesc>
-            </CardContent>
-          </Card>
-          <Card onClick={() => navigate('/details/asd')}>
-            <img src={grandma_5_card} alt="grandma_5_card" />
-            <CardContent>
-              <CardTitle>
-                Gukbap master
-                <br />
-                Lee Yeong-soon
-              </CardTitle>
-              <CardDesc>Seo-gu, Busan / Youngsoon Lee</CardDesc>
-            </CardContent>
-          </Card> */}
         </CardList>
       </CardListContainer>
-      <Button onClick={() => navigate('/reviews/asd')}>
+      <Button
+        onClick={() =>
+          navigate(`/reviews/${data.items[swiper!.activeIndex!]!.id}-0`)
+        }
+      >
         Story with Grandma &gt;
       </Button>
     </>
