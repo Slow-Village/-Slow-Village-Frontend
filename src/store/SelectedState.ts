@@ -1,12 +1,12 @@
-import {atom} from 'recoil';
+import { atom } from 'recoil';
 
 export type SelectedType = {
-    id: number
-}
+  id: number;
+};
 
 export const SelectedState = atom<SelectedType>({
-    key:'filterstate',
-    default: {
-        id: 0
-    },
-})
+  key: 'filterstate',
+  default: {
+    id: 0,
+  },
+});

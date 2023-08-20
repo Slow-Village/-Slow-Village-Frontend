@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
+import { useRecoilValue } from 'recoil';
 
+import data from '~assets/data/data.json';
 import ChevronLeftIcon from '~assets/icons/chevron_left.svg';
 import PaymentIcon from '~assets/icons/payment.svg';
 import PhoneIcon from '~assets/icons/phone.svg';
@@ -7,9 +9,6 @@ import ProfileIcon from '~assets/icons/profile.svg';
 import QuestionIcon from '~assets/icons/question.svg';
 import grandma_1_reservation from '~assets/images/grandma_1_reservation.png';
 import MoveBackButton from '~components/MoveBackButton';
-
-import data from '~assets/data/data.json';
-import { useRecoilValue } from 'recoil';
 import { ReservationState } from '~store/ReservationState';
 
 const TopBar = styled.div`
@@ -84,29 +83,35 @@ const None = styled.div`
 
 const ProfilePage = () => {
   const reservation = useRecoilValue(ReservationState);
-  const reservedArticle = reservation && data.items.find(item => item.id === reservation.id)!;
+  const reservedArticle =
+    reservation && data.items.find((item) => item.id === reservation.id)!;
   return (
     <>
       <TopBar>
         <MoveBackButton />
       </TopBar>
       <Title>My Trip</Title>
-      {
-        !reservedArticle && (
-          <None>None</None>
-        )
-      }
-      {reservedArticle && (<Card>
-        <img src={import.meta.env.BASE_URL + '/' + reservedArticle.image} alt={reservedArticle.image} />
-        <CardContent>
-          <CardContentVertical>
-            <CardTitle>{reservedArticle.first_name}’s House</CardTitle>
-            <CardDescription>{reservation.start_date} - {reservation.end_date}</CardDescription>
-            <CardDescription>{reservedArticle.address}, Busan</CardDescription>
-          </CardContentVertical>
-          <PhoneIcon />
-        </CardContent>
-      </Card>)}
+      {!reservedArticle && <None>None</None>}
+      {reservedArticle && (
+        <Card>
+          <img
+            src={`${import.meta.env.BASE_URL}/${reservedArticle.image}`}
+            alt={reservedArticle.image}
+          />
+          <CardContent>
+            <CardContentVertical>
+              <CardTitle>{reservedArticle.first_name}’s House</CardTitle>
+              <CardDescription>
+                {reservation.start_date} - {reservation.end_date}
+              </CardDescription>
+              <CardDescription>
+                {reservedArticle.address}, Busan
+              </CardDescription>
+            </CardContentVertical>
+            <PhoneIcon />
+          </CardContent>
+        </Card>
+      )}
       <Title>Setting</Title>
       <SettingItem>
         <ProfileIcon />

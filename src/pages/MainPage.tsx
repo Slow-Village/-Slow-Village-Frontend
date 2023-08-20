@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
+import { addDays, format } from 'date-fns';
 import { useCallback, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { DateRange, DayPicker } from 'react-day-picker';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { addDays, format } from 'date-fns';
-import { DateRange, DayPicker } from 'react-day-picker';
-
+import address_json from '~assets/data/address.json';
+import data from '~assets/data/data.json';
 import BellRedIcon from '~assets/icons/bell_red.svg';
 import ProfileIcon from '~assets/icons/profile.svg';
 import SearchIcon from '~assets/icons/search.svg';
@@ -14,11 +15,7 @@ import grandma_1_card from '~assets/images/grandma_1_card.png';
 import grandma_3_card from '~assets/images/grandma_3_card.png';
 import grandma_4_card from '~assets/images/grandma_4_card.png';
 import grandma_5_card from '~assets/images/grandma_5_card.png';
-
 import { FilterState } from '~store/FilterState';
-
-import address_json from '~assets/data/address.json';
-import data from '~assets/data/data.json';
 
 const Header = styled.div`
   display: flex;
@@ -144,7 +141,7 @@ const Select = styled.select`
   color: #222222;
   font-size: 13px;
   font-weight: 600;
-`
+`;
 
 const Option = styled.option`
   border-radius: 500px;
@@ -153,11 +150,11 @@ const Option = styled.option`
   color: #222222;
   font-size: 13px;
   font-weight: 600;
-`
+`;
 
 const DateBlock = styled.span`
-  min-width : 100px;
-`
+  min-width: 100px;
+`;
 
 const CustomDayPicker = styled(DayPicker)`
   position: absolute;
@@ -167,7 +164,7 @@ const CustomDayPicker = styled(DayPicker)`
   border: 1px solid #ebebeb;
   border-radius: 12px;
   z-index: 999;
-  
+
   .rdp-caption {
     justify-content: center;
   }
@@ -177,11 +174,11 @@ const CustomDayPicker = styled(DayPicker)`
   }
   .rdp-nav {
     margin-top: 13px;
-    button[name="previous-month"] {
+    button[name='previous-month'] {
       width: 23px;
       height: 23px;
     }
-    button[name="next-month"] {
+    button[name='next-month'] {
       width: 23px;
       height: 23px;
     }
@@ -189,47 +186,47 @@ const CustomDayPicker = styled(DayPicker)`
   .react-datepicker__navigation--next {
     background: url(../images/rightArrow.png) no-repeat;
     border: none;
-}
-`
+  }
+`;
 
 const Search = styled.a`
   cursor: pointer;
-`
+`;
 
 type Address = {
   address: Array<GuAddress>;
-}
+};
 
 type GuAddress = {
   eng_name: string;
   kor_name: string;
-}
+};
 
 const pastMonth = new Date();
 
 const MainPage = () => {
   const navigate = useNavigate();
   const address: Address = address_json;
-  let footer = <p></p>;
+  const footer = <p />;
 
   const [filters, setFilters] = useRecoilState(FilterState);
-  const [currentAddress, setCurrentAddress] = useState("All");
+  const [currentAddress, setCurrentAddress] = useState('All');
   const [currentHeadcount, setCurrentHeadcount] = useState(1);
 
   const [calendarSwitch, setCalendarSwitch] = useState(false);
   const defaultSelected: DateRange = {
     from: pastMonth,
-    to: addDays(pastMonth, 4)
+    to: addDays(pastMonth, 4),
   };
   const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
 
   const handleChangeAddress = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentAddress(event.target.value);
-  }
+  };
 
   const handleHeadcount = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentHeadcount(parseInt(event.target.value));
-  }
+  };
 
   const handleFilter = () => {
     setFilters((filters: any) => ({
@@ -237,7 +234,7 @@ const MainPage = () => {
       address: currentAddress,
       headcount: currentHeadcount,
       range_from: range?.from!,
-      range_to: range?.to!
+      range_to: range?.to!,
     }));
   };
 
@@ -252,25 +249,37 @@ const MainPage = () => {
       </Header>
       <SearchBar>
         <div>
-          <DateBlock onClick={() => setCalendarSwitch(!calendarSwitch)}>{range !== undefined && range.from !== undefined ? format(range.from, 'MMM dd') : ""} - {range !== undefined && range.to !== undefined ? format(range.to, 'MMM dd') : ""}</DateBlock>
-          {
-            calendarSwitch ? <CustomDayPicker
+          <DateBlock onClick={() => setCalendarSwitch(!calendarSwitch)}>
+            {range !== undefined && range.from !== undefined
+              ? format(range.from, 'MMM dd')
+              : ''}{' '}
+            -{' '}
+            {range !== undefined && range.to !== undefined
+              ? format(range.to, 'MMM dd')
+              : ''}
+          </DateBlock>
+          {calendarSwitch ? (
+            <CustomDayPicker
               mode="range"
               defaultMonth={pastMonth}
               selected={range}
               footer={footer}
               onSelect={setRange}
               showOutsideDays
-            /> : ""
-          }
+            />
+          ) : (
+            ''
+          )}
           <Divider />
           <Select value={currentAddress} onChange={handleChangeAddress}>
             <Option value="All">All</Option>
-            {
-              address.address.map((gu) => {
-                return (<Option key={gu.eng_name} value={gu.eng_name} >{gu.eng_name}</Option>);
-              })
-            }
+            {address.address.map((gu) => {
+              return (
+                <Option key={gu.eng_name} value={gu.eng_name}>
+                  {gu.eng_name}
+                </Option>
+              );
+            })}
           </Select>
           <Divider />
           <Select value={currentHeadcount} onChange={handleHeadcount}>
@@ -293,23 +302,36 @@ const MainPage = () => {
             type: 'fraction',
           }}
         >
-          {
-            data.items.filter(item => filters.address === 'All' || (item.address === filters.address && item.headcount >= filters.headcount)).map((item) => {
+          {data.items
+            .filter(
+              (item) =>
+                filters.address === 'All' ||
+                (item.address === filters.address &&
+                  item.headcount >= filters.headcount)
+            )
+            .map((item) => {
               return (
-                <Card key={item.id} onClick={() => navigate(`/details/${item.id}`)}>
-                  <img src={`${import.meta.env.BASE_URL}/${item.title_image}`} alt={item.image} />
+                <Card
+                  key={item.id}
+                  onClick={() => navigate(`/details/${item.id}`)}
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}/${item.title_image}`}
+                    alt={item.image}
+                  />
                   <CardContent>
                     <CardTitle>
                       {item.title}
                       <br />
                       {item.title2}
                     </CardTitle>
-                    <CardDesc>Busan {item.address} / {item.first_name} {item.last_name}</CardDesc>
+                    <CardDesc>
+                      Busan {item.address} / {item.first_name} {item.last_name}
+                    </CardDesc>
                   </CardContent>
                 </Card>
               );
-            })
-          }
+            })}
           {/* <Card onClick={() => navigate('/details/asd')}>
             <img src={grandma_3_card} alt="grandma_3_card" />
             <CardContent>

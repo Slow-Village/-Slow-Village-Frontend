@@ -11,7 +11,7 @@ const globalStyles = css`
   ${resetStyles};
 
   * {
-    --rdp-accent-color: #F4BB40;
+    --rdp-accent-color: #f4bb40;
     --rdp-background-color: rgba(244, 187, 64, 0.5);
   }
   :root {

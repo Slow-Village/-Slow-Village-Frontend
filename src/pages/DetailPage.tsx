@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -9,9 +10,10 @@ import MoveBackButton from '~components/MoveBackButton';
 import ShareButton from '~components/ShareButton';
 
 import data from '~assets/data/data.json';
-import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
+
 import { FilterState } from '~store/FilterState';
+
 import { format } from 'date-fns';
 
 const TopBar = styled.div`
@@ -153,7 +155,7 @@ const DetailDescription = styled.p`
 const DetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const article = data.items.find(item => item.id === Number(id))!;
+  const article = data.items.find((item) => item.id === Number(id))!;
   const filters = useRecoilValue(FilterState);
   return (
     <>
@@ -161,21 +163,27 @@ const DetailPage = () => {
         <MoveBackButton />
         <ShareButton />
       </TopBar>
-      <img src={`${import.meta.env.BASE_URL}/${article.image}`} alt="grandma_1" />
+      <img
+        src={`${import.meta.env.BASE_URL}/${article.image}`}
+        alt="grandma_1"
+      />
       <Container>
-        <Title>{article.title} {article.title2}</Title>
-        <Summary>{article.address}, Busan / {article.first_name} {article.last_name}</Summary>
+        <Title>
+          {article.title} {article.title2}
+        </Title>
+        <Summary>
+          {article.address}, Busan / {article.first_name} {article.last_name}
+        </Summary>
 
-        {
-          article.contents.map((content) => {
+        {article.contents.map((content) => {
             if (content.type === 'text') {
               return <Content>{content.content}</Content>
             }
-            else if (content.type === 'image') {
+            if (content.type === 'image') {
               return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
             }
           })
-        }
+        })}
         <CardListHeader>Stay stories</CardListHeader>
         <CardListContainer>
           <CardList
@@ -186,36 +194,36 @@ const DetailPage = () => {
               type: 'fraction',
             }}
           >
-            {
-              article.reviews.map((review, index) => {
-                return (
-                  <Card onClick={() => navigate(`/reviews/${id}-${index}`)}>
-                    <img src={`${import.meta.env.BASE_URL}/${review.url}`} alt={review.url} />
-                    <CardContent>
-                      <CardTopDesc>User: user{Math.random().toString().slice(2)}</CardTopDesc>
-                      <CardTitle>
-                        {review.title}
-                      </CardTitle>
-                    </CardContent>
-                  </Card>
-                )
-              })
-            }
+            {article.reviews.map((review, index) => {
+              return (
+                <Card onClick={() => navigate(`/reviews/${id}-${index}`)}>
+                  <img
+                    src={`${import.meta.env.BASE_URL}/${review.url}`}
+                    alt={review.url}
+                  />
+                  <CardContent>
+                    <CardTopDesc>
+                      User: user{Math.random().toString().slice(2)}
+                    </CardTopDesc>
+                    <CardTitle>{review.title}</CardTitle>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </CardList>
         </CardListContainer>
         <DetailHeader>Exploring {article.first_name}&apos;s House</DetailHeader>
         <DetailList>
-          {
-            article.features.map((feature) => {
-              return <DetailItem>{feature}</DetailItem>
-            })
-          }
+          {article.features.map((feature) => {
+            return <DetailItem>{feature}</DetailItem>;
+          })}
         </DetailList>
         <Button onClick={() => navigate(`/confirm-order/${id}`)}>
           Visiting Grandma {article.first_name} {article.last_name}
         </Button>
         <DetailDescription>
-          Reservation Dates: {format(filters.range_from, 'MMM do')} - {format(filters.range_to, 'MMM do')}  | 15,000 won / 1 night
+          Reservation Dates: {format(filters.range_from, 'MMM do')} -{' '}
+          {format(filters.range_to, 'MMM do')} | 15,000 won / 1 night
         </DetailDescription>
       </Container>
     </>

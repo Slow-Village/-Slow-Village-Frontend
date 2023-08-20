@@ -1,17 +1,15 @@
 import styled from '@emotion/styled';
+import { differenceInDays, format } from 'date-fns';
 import { useState, useRef } from 'react';
-
 import Sheet from 'react-modal-sheet';
-
-import dongbaekjeon from '~assets/images/dongbaekjeon.png';
-import shinhancard from '~assets/images/shinhancard2.png';
-import creditcard from '~assets/images/creditcard.png';
-import MoveBackButton from '~components/MoveBackButton';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 
 import data from '~assets/data/data.json';
-import { differenceInDays, format } from 'date-fns';
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import creditcard from '~assets/images/creditcard.png';
+import dongbaekjeon from '~assets/images/dongbaekjeon.png';
+import shinhancard from '~assets/images/shinhancard2.png';
+import MoveBackButton from '~components/MoveBackButton';
 import { FilterState } from '~store/FilterState';
 import { ReservationState } from '~store/ReservationState';
 
@@ -93,13 +91,13 @@ const Button = styled.button`
 
 const CustomSheet = styled(Sheet)`
   display: block;
-`
+`;
 
 const ConfirmOrderPage = () => {
   const [isOpen, setOpen] = useState(false);
   const modalPointRef = useRef(null);
   const { id } = useParams();
-  const article = data.items.find(item => item.id === Number(id))!;
+  const article = data.items.find((item) => item.id === Number(id))!;
   const filters = useRecoilValue(FilterState);
   const setReservations = useSetRecoilState(ReservationState);
   const navigate = useNavigate();
@@ -110,9 +108,9 @@ const ConfirmOrderPage = () => {
       id: Number(id),
       start_date: format(filters.range_to, 'yyyy.MM.dd'),
       end_date: format(filters.range_to, 'yyyy.MM.dd'),
-    })
+    });
     navigate('/profile');
-  }
+  };
 
   return (
     <>
@@ -122,10 +120,21 @@ const ConfirmOrderPage = () => {
       <Title ref={modalPointRef}>Confirm Trip</Title>
       <TripTitle>{article.first_name}&apos;s House</TripTitle>
       <Item>
-        Schedule: <u>{format(filters.range_from, 'yyyy. MM. dd')} - {format(filters.range_to, 'yyyy. MM. dd')} / {differenceInDays(filters.range_to, filters.range_from)} nights</u>
+        Schedule:{' '}
+        <u>
+          {format(filters.range_from, 'yyyy. MM. dd')} -{' '}
+          {format(filters.range_to, 'yyyy. MM. dd')} /{' '}
+          {differenceInDays(filters.range_to, filters.range_from)} nights
+        </u>
       </Item>
       <Item>Breakfast: Seaweed soup served every morning</Item>
-      <Item>Total Amount: {(differenceInDays(filters.range_to, filters.range_from) * 15000).toLocaleString()} won (15,000 won per night)</Item>
+      <Item>
+        Total Amount:{' '}
+        {(
+          differenceInDays(filters.range_to, filters.range_from) * 15000
+        ).toLocaleString()}{' '}
+        won (15,000 won per night)
+      </Item>
       <Caution>
         Cancellation and Refund Policy
         <br />
@@ -142,7 +151,9 @@ const ConfirmOrderPage = () => {
       <CustomSheet
         isOpen={isOpen}
         onClose={() => setOpen(false)}
-        mountPoint={modalPointRef.current !== null ? modalPointRef.current : document.body}
+        mountPoint={
+          modalPointRef.current !== null ? modalPointRef.current : document.body
+        }
         snapPoints={[400, 0]}
       >
         <Sheet.Container>
@@ -152,31 +163,44 @@ const ConfirmOrderPage = () => {
             <PaymentTitle>Payment</PaymentTitle>
             <PaymentMethod onClick={() => handleReservation()}>
               <img src={dongbaekjeon} alt="dongbaekjeon" />
-              <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000 * 0.95).toLocaleString()} WON</Won>
+              <Won>
+                {(
+                  differenceInDays(filters.range_to, filters.range_from) *
+                  15000 *
+                  0.95
+                ).toLocaleString()}{' '}
+                WON
+              </Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
-            <PaymentMethod onClick={
-              () => handleReservation()
-            }>
+            <PaymentMethod onClick={() => handleReservation()}>
               <img src={shinhancard} alt="shinhancard" />
-              <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000).toLocaleString()} WON</Won>
+              <Won>
+                {(
+                  differenceInDays(filters.range_to, filters.range_from) * 15000
+                ).toLocaleString()}{' '}
+                WON
+              </Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentTitle>New Payment Method</PaymentTitle>
-            <PaymentMethod >
+            <PaymentMethod>
               <img src={creditcard} alt="creditcard" />
               <Text>Add New Credit Card</Text>
               {/* <Won>427,500 WON</Won> */}
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
-
           </Sheet.Content>
         </Sheet.Container>
         <Sheet.Backdrop />
       </CustomSheet>
-      <Button onClick={() => {
-        setOpen(true);
-      }}>Confirm to Pay</Button>
+      <Button
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Confirm to Pay
+      </Button>
     </>
   );
 };

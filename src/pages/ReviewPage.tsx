@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { format } from 'date-fns';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import grandma_2 from '~assets/images/grandma_2.png';
@@ -11,7 +12,6 @@ import ShareButton from '~components/ShareButton';
 import data from '~assets/data/data.json';
 import { useRecoilValue } from 'recoil';
 import { FilterState } from '~store/FilterState';
-import { format } from 'date-fns';
 
 const TopBar = styled.div`
   display: flex;
@@ -101,7 +101,7 @@ const ReviewPage = () => {
   const { id: idAsParam } = useParams();
   const [id, reviewIdx] = idAsParam!.split('-');
 
-  const article = data.items.find(item => item.id === Number(id))!;
+  const article = data.items.find((item) => item.id === Number(id))!;
   const review = article.reviews[Number(reviewIdx)];
   const filters = useRecoilValue(FilterState);
   return (
@@ -112,35 +112,30 @@ const ReviewPage = () => {
       </TopBar>
       <img src={`${import.meta.env.BASE_URL}/${review.url}`} alt={review.url} />
       <Container>
-        <Title>{review.title}
-        </Title>
-        <Summary>
-          {review.sub_title}
-        </Summary>
+        <Title>{review.title}</Title>
+        <Summary>{review.sub_title}</Summary>
 
-        {
-          review.contents.map((content) => {
+        {review.contents.map((content) => {
             if (content.type === 'text') {
               return <Content>{content.content}</Content>
             }
-            else if (content.type === 'image') {
+            if (content.type === 'image') {
               return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
             }
           })
-        }
+        })}
         <DetailHeader>Exploring {article.first_name}&apos;s House</DetailHeader>
         <DetailList>
-          {
-            article.features.map((feature) => {
-              return <DetailItem>{feature}</DetailItem>
-            })
-          }
+          {article.features.map((feature) => {
+            return <DetailItem>{feature}</DetailItem>;
+          })}
         </DetailList>
         <Button onClick={() => navigate(`/confirm-order/${id}`)}>
           Visiting Grandma {article.first_name} {article.last_name}
         </Button>
         <DetailDescription>
-          Reservation Dates: {format(filters.range_from, 'MMM do')} - {format(filters.range_to, 'MMM do')}  | 15,000 won / 1 night
+          Reservation Dates: {format(filters.range_from, 'MMM do')} -{' '}
+          {format(filters.range_to, 'MMM do')} | 15,000 won / 1 night
         </DetailDescription>
       </Container>
     </>

@@ -1,7 +1,8 @@
 import { Global, ThemeProvider } from '@emotion/react';
-import { RouterProvider } from 'react-router-dom';
-import { RecoilRoot, useRecoilState } from "recoil";
 import { useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { RecoilRoot, useRecoilState } from 'recoil';
+
 import globalStyles from '~styles/globalStyles';
 
 import router from './router';
