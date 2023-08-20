@@ -9,19 +9,17 @@ export type ArticleType = {
     last_name: string,
     image: string,
     contents: Array<any>,
-    features: Array<string>
+    features: Array<string>,
+    reviews: Array<string>
 }
 
-export const ArticleState = atom<ArticleType>({
+export type ArticleListType = {
+    items: Array<ArticleType>
+}
+
+export const ArticleState = atom<ArticleListType>({
     key:'filterstate',
     default: {
-        id: 0,
-        title: "",
-        address: "",
-        first_name: "",
-        last_name: "",
-        image: "",
-        contents: [],
-        features: []
+        items: []
     },
 })

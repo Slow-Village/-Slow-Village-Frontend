@@ -14,9 +14,11 @@ import grandma_1_card from '~assets/images/grandma_1_card.png';
 import grandma_3_card from '~assets/images/grandma_3_card.png';
 import grandma_4_card from '~assets/images/grandma_4_card.png';
 import grandma_5_card from '~assets/images/grandma_5_card.png';
-import address_json from '~assets/data/address.json';
 
-import {FilterState} from '~store/FilterState'
+import { FilterState } from '~store/FilterState';
+
+import address_json from '~assets/data/address.json';
+import data from '~assets/data/data.json';
 
 const Header = styled.div`
   display: flex;
@@ -153,7 +155,7 @@ const Option = styled.option`
   font-weight: 600;
 `
 
-const DateBlock = styled.span `
+const DateBlock = styled.span`
   min-width : 100px;
 `
 
@@ -190,7 +192,7 @@ const CustomDayPicker = styled(DayPicker)`
 }
 `
 
-const Search = styled.a `
+const Search = styled.a`
   cursor: pointer;
 `
 
@@ -211,7 +213,7 @@ const MainPage = () => {
   let footer = <p></p>;
 
   const [filters, setFilters] = useRecoilState(FilterState);
-  const [currentAddress, setCurrentAddress] = useState("Gangseo-gu");
+  const [currentAddress, setCurrentAddress] = useState("All");
   const [currentHeadcount, setCurrentHeadcount] = useState(1);
 
   const [calendarSwitch, setCalendarSwitch] = useState(false);
@@ -233,7 +235,9 @@ const MainPage = () => {
     setFilters((filters: any) => ({
       ...filters,
       address: currentAddress,
-      headcount: currentHeadcount
+      headcount: currentHeadcount,
+      range_from: range?.from!,
+      range_to: range?.to!
     }));
   };
 
@@ -251,19 +255,20 @@ const MainPage = () => {
           <DateBlock onClick={() => setCalendarSwitch(!calendarSwitch)}>{range !== undefined && range.from !== undefined ? format(range.from, 'MMM dd') : ""} - {range !== undefined && range.to !== undefined ? format(range.to, 'MMM dd') : ""}</DateBlock>
           {
             calendarSwitch ? <CustomDayPicker
-            mode="range"
-            defaultMonth={pastMonth}
-            selected={range}
-            footer={footer}
-            onSelect={setRange}
-            showOutsideDays
-          /> : ""
+              mode="range"
+              defaultMonth={pastMonth}
+              selected={range}
+              footer={footer}
+              onSelect={setRange}
+              showOutsideDays
+            /> : ""
           }
           <Divider />
           <Select value={currentAddress} onChange={handleChangeAddress}>
+            <Option value="All">All</Option>
             {
               address.address.map((gu) => {
-                return (<Option value={gu.eng_name} >{gu.eng_name}</Option>);
+                return (<Option key={gu.eng_name} value={gu.eng_name} >{gu.eng_name}</Option>);
               })
             }
           </Select>
@@ -288,7 +293,24 @@ const MainPage = () => {
             type: 'fraction',
           }}
         >
-          <Card onClick={() => navigate('/details/asd')}>
+          {
+            data.items.filter(item => filters.address === 'All' || (item.address === filters.address && item.headcount >= filters.headcount)).map((item) => {
+              return (
+                <Card key={item.id} onClick={() => navigate(`/details/${item.id}`)}>
+                  <img src={`${import.meta.env.BASE_URL}/${item.title_image}`} alt={item.image} />
+                  <CardContent>
+                    <CardTitle>
+                      {item.title}
+                      <br />
+                      {item.title2}
+                    </CardTitle>
+                    <CardDesc>Busan {item.address} / {item.first_name} {item.last_name}</CardDesc>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+          {/* <Card onClick={() => navigate('/details/asd')}>
             <img src={grandma_3_card} alt="grandma_3_card" />
             <CardContent>
               <CardTitle>
@@ -330,7 +352,7 @@ const MainPage = () => {
               </CardTitle>
               <CardDesc>Seo-gu, Busan / Youngsoon Lee</CardDesc>
             </CardContent>
-          </Card>
+          </Card> */}
         </CardList>
       </CardListContainer>
       <Button onClick={() => navigate('/reviews/asd')}>

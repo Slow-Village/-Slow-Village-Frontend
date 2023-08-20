@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import grandma_2 from '~assets/images/grandma_2.png';
 import grandma_2_1 from '~assets/images/grandma_2_1.png';
@@ -7,6 +7,11 @@ import grandma_2_2 from '~assets/images/grandma_2_2.png';
 import grandma_2_3 from '~assets/images/grandma_2_3.png';
 import MoveBackButton from '~components/MoveBackButton';
 import ShareButton from '~components/ShareButton';
+
+import data from '~assets/data/data.json';
+import { useRecoilValue } from 'recoil';
+import { FilterState } from '~store/FilterState';
+import { format } from 'date-fns';
 
 const TopBar = styled.div`
   display: flex;
@@ -93,78 +98,49 @@ const DetailDescription = styled.p`
 
 const ReviewPage = () => {
   const navigate = useNavigate();
+  const { id: idAsParam } = useParams();
+  const [id, reviewIdx] = idAsParam!.split('-');
+
+  const article = data.items.find(item => item.id === Number(id))!;
+  const review = article.reviews[Number(reviewIdx)];
+  const filters = useRecoilValue(FilterState);
   return (
     <>
       <TopBar>
         <MoveBackButton />
         <ShareButton />
       </TopBar>
-      <img src={grandma_2} alt="grandma_2" />
+      <img src={`${import.meta.env.BASE_URL}/${review.url}`} alt={review.url} />
       <Container>
-        <Title>
-          See you again grandma.
-          <br />
-          I’ll bring my boyfriend next time.
+        <Title>{review.title}
         </Title>
         <Summary>
-          Grandmother&apos;s house filled with love / Park Cheongja
+          {review.sub_title}
         </Summary>
-        <Content>
-          Our first meeting was on a sunny day. My grandmother welcomed me with
-          a warm smile, and from that moment on, a corner of my heart was filled
-          with warmth. The fragrant coffee times and cooking sessions we shared
-          on early mornings were dazzlingly beautiful. The dishes created by my
-          grandmother&apos;s touch were also uniquely delicious. Her secret
-          ingredient was &apos;love&apos;.
-          <br />
-          <br />
-          The time we spent together for a month was always filled with
-          happiness. My grandmother shared stories ranging from her childhood to
-          the most recent ones. During those moments, I felt as if time stood
-          still, and I got lost in her stories. The warmth and experience in her
-          eyes, which I could see, gave me great courage and strength.
-          <br />
-        </Content>
-        <img src={grandma_2_1} alt="grandma_2_1" />
-        <Content>
-          The time together always seemed to pass quickly. On the last day spent
-          with my grandmother, I promised myself that I would forever remember
-          this treasure-like time. The path we walked, holding my
-          grandmother&apos;s hand, will remain a precious treasure in my heart.
-        </Content>
-        <img src={grandma_2_2} alt="grandma_2_2" />
-        <img src={grandma_2_3} alt="grandma_2_3" />
-        <Content>
-          This past month was a meaningful time for me. The moments spent with
-          my grandmother gave me great inspiration and love. Now, I want to
-          share these memories with all of you through a blog post, to share all
-          the emotions and gratitude. I will cherish this special month with my
-          grandmother and strive to become a better person.
-        </Content>
-        <DetailHeader>Exploring Cheongja&apos;s House</DetailHeader>
+
+        {
+          review.contents.map((content) => {
+            if (content.type === 'text') {
+              return <Content>{content.content}</Content>
+            }
+            else if (content.type === 'image') {
+              return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
+            }
+          })
+        }
+        <DetailHeader>Exploring {article.first_name}&apos;s House</DetailHeader>
         <DetailList>
-          <DetailItem>
-            Grandma&apos;s house, where she has resided for over 30 years, is
-            filled with warm affection.
-          </DetailItem>
-          <DetailItem>
-            There are a total of 2 rooms, and one of them can be separated for
-            guest use.
-          </DetailItem>
-          <DetailItem>
-            The rooms are equipped with essentials such as air conditioning, a
-            desk, a bed, and Wi-Fi.
-          </DetailItem>
-          <DetailItem>
-            The bathroom features a bidet, and a washing machine is also
-            provided.
-          </DetailItem>
+          {
+            article.features.map((feature) => {
+              return <DetailItem>{feature}</DetailItem>
+            })
+          }
         </DetailList>
-        <Button onClick={() => navigate('/confirm-order/asd')}>
-          Visiting Grandma Park Cheongja
+        <Button onClick={() => navigate(`/confirm-order/${id}`)}>
+          Visiting Grandma {article.first_name} {article.last_name}
         </Button>
         <DetailDescription>
-          Reservation Dates: Aug 20th - Sept 20th | 15,000 won / 1 night
+          Reservation Dates: {format(filters.range_from, 'MMM do')} - {format(filters.range_to, 'MMM do')}  | 15,000 won / 1 night
         </DetailDescription>
       </Container>
     </>

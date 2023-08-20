@@ -1,19 +1,20 @@
-import {atom} from 'recoil';
+import { addDays } from 'date-fns';
+import { atom } from 'recoil';
 
 export type FilterType = {
     address: string;
-    range_from: string;
-    range_to: string;
+    range_from: Date;
+    range_to: Date;
     period: number;
     headcount: number;
 }
 
 export const FilterState = atom<FilterType>({
-    key:'filterstate',
+    key: 'filterstate',
     default: {
-        address: 'Gangseo-gu',
-        range_from: '',
-        range_to: '',
+        address: 'All',
+        range_from: addDays(new Date(), -3),
+        range_to: new Date(),
         period: 1,
         headcount: 1
     },

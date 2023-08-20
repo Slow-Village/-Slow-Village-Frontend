@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import grandma_1 from '~assets/images/grandma_1.png';
@@ -7,6 +7,12 @@ import grandma_1_1 from '~assets/images/grandma_1_1.png';
 import grandma_1_2 from '~assets/images/grandma_1_2.png';
 import MoveBackButton from '~components/MoveBackButton';
 import ShareButton from '~components/ShareButton';
+
+import data from '~assets/data/data.json';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { FilterState } from '~store/FilterState';
+import { format } from 'date-fns';
 
 const TopBar = styled.div`
   display: flex;
@@ -74,6 +80,11 @@ const CardList = styled(Swiper)`
 const Card = styled(SwiperSlide)`
   position: relative;
   cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
 `;
 
 const CardContent = styled.div`
@@ -141,55 +152,30 @@ const DetailDescription = styled.p`
 
 const DetailPage = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const article = data.items.find(item => item.id === Number(id))!;
+  const filters = useRecoilValue(FilterState);
   return (
     <>
       <TopBar>
         <MoveBackButton />
         <ShareButton />
       </TopBar>
-      <img src={grandma_1} alt="grandma_1" />
+      <img src={`${import.meta.env.BASE_URL}/${article.image}`} alt="grandma_1" />
       <Container>
-        <Title>Lived in Busan for 50 years</Title>
-        <Summary>Namchun-dong, Busan / 73th years old / Oksun Kim</Summary>
-        <Content>
-          Hello there! I&apos;m Kim Ok-soon. From a young age until now,
-          I&apos;ve been living and breathing in Busan for decades, becoming a
-          true Busan gem. You won&apos;t believe how my heart skips a beat and
-          my energy surges when I hear someone whispering in the Busan dialect.
-          It&apos;s like the feeling when you sit down and stand up after
-          savoring a piping hot bowl of soup - that same warmth spreads through
-          you. Just like the tender broth, looking at others with the same Busan
-          heart and speaking in our dialect warms my spirit.
-          <br />
-          <br />
-          Busan is a city with its head held high and feet that move quickly.
-          It&apos;s not just a phrase but something I&apos;ve felt firsthand, as
-          if I&apos;ve touched it with my own hands. The elderly folks on the
-          streets greet you with smiles, making the whole place feel like a
-          village where everyone smiles like sunshine. People who greet each
-          other respectfully wherever they go - when translated into the Busan
-          dialect, it&apos;s even more intriguing and feels like a fragrant
-          flower blooming in your heart.
-          <br />
-          Walking along Busan&apos;s coastline, I&apos;ve enjoyed the proud
-          beauty of our unique scenery, often accompanied by the bright smiles
-          of travelers. With the sun shining over the white sandy beach, the
-          shadows spreading out, it&apos;s as if the charm of Busan that
-          I&apos;ve always held dear becomes yet another picturesque landscape.
-          I feel fortunate to have been born a Busanite. Living confidently in
-          such a charming city fills me with joy.
-          <br />
-        </Content>
-        <img src={grandma_1_1} alt="grandma_1_1" />
-        <Content>
-          In my youth, I had dreams about Busan, but now, as a true Busan
-          native, I&apos;m grateful to experience its beauty firsthand and share
-          happy times. As I tell stories about my little hometown of Busan, I
-          hope to spread the flames of Busan&apos;s love to others. I want to
-          continue cherishing Busan, sharing its beauty with others, and
-          embracing the moments that lie ahead. I&apos;ll never forget that
-          Busan is both my proud hometown and an integral part of my life.
-        </Content>
+        <Title>{article.title} {article.title2}</Title>
+        <Summary>{article.address}, Busan / {article.first_name} {article.last_name}</Summary>
+
+        {
+          article.contents.map((content) => {
+            if (content.type === 'text') {
+              return <Content>{content.content}</Content>
+            }
+            else if (content.type === 'image') {
+              return <img src={`${import.meta.env.BASE_URL}/${content.content}`} alt={content.content} />
+            }
+          })
+        }
         <CardListHeader>Stay stories</CardListHeader>
         <CardListContainer>
           <CardList
@@ -200,65 +186,36 @@ const DetailPage = () => {
               type: 'fraction',
             }}
           >
-            <Card onClick={() => navigate('/reviews/asd')}>
-              <img src={grandma_1_2} alt="grandma_1_2" />
-              <CardContent>
-                <CardTopDesc>User: hello1289</CardTopDesc>
-                <CardTitle>
-                  Lived in Busan,
-                  <br />
-                  for 50 years
-                </CardTitle>
-              </CardContent>
-            </Card>
-            <Card onClick={() => navigate('/reviews/asd')}>
-              <img src={grandma_1_2} alt="grandma_1_2" />
-              <CardContent>
-                <CardTopDesc>User: hello1289</CardTopDesc>
-                <CardTitle>
-                  Lived in Busan,
-                  <br />
-                  for 50 years
-                </CardTitle>
-              </CardContent>
-            </Card>
-            <Card onClick={() => navigate('/reviews/asd')}>
-              <img src={grandma_1_2} alt="grandma_1_2" />
-              <CardContent>
-                <CardTopDesc>User: hello1289</CardTopDesc>
-                <CardTitle>
-                  Lived in Busan,
-                  <br />
-                  for 50 years
-                </CardTitle>
-              </CardContent>
-            </Card>
+            {
+              article.reviews.map((review, index) => {
+                return (
+                  <Card onClick={() => navigate(`/reviews/${id}-${index}`)}>
+                    <img src={`${import.meta.env.BASE_URL}/${review.url}`} alt={review.url} />
+                    <CardContent>
+                      <CardTopDesc>User: user{Math.random().toString().slice(2)}</CardTopDesc>
+                      <CardTitle>
+                        {review.title}
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
+                )
+              })
+            }
           </CardList>
         </CardListContainer>
-        <DetailHeader>Exploring Cheongja&apos;s House</DetailHeader>
+        <DetailHeader>Exploring {article.first_name}&apos;s House</DetailHeader>
         <DetailList>
-          <DetailItem>
-            Grandma&apos;s house, where she has resided for over 30 years, is
-            filled with warm affection.
-          </DetailItem>
-          <DetailItem>
-            There are a total of 2 rooms, and one of them can be separated for
-            guest use.
-          </DetailItem>
-          <DetailItem>
-            The rooms are equipped with essentials such as air conditioning, a
-            desk, a bed, and Wi-Fi.
-          </DetailItem>
-          <DetailItem>
-            The bathroom features a bidet, and a washing machine is also
-            provided.
-          </DetailItem>
+          {
+            article.features.map((feature) => {
+              return <DetailItem>{feature}</DetailItem>
+            })
+          }
         </DetailList>
-        <Button onClick={() => navigate('/confirm-order/asd')}>
-          Visiting Grandma Park Cheongja
+        <Button onClick={() => navigate(`/confirm-order/${id}`)}>
+          Visiting Grandma {article.first_name} {article.last_name}
         </Button>
         <DetailDescription>
-          Reservation Dates: Aug 20th - Sept 20th | 15,000 won / 1 night
+          Reservation Dates: {format(filters.range_from, 'MMM do')} - {format(filters.range_to, 'MMM do')}  | 15,000 won / 1 night
         </DetailDescription>
       </Container>
     </>

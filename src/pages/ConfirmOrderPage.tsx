@@ -7,6 +7,12 @@ import dongbaekjeon from '~assets/images/dongbaekjeon.png';
 import shinhancard from '~assets/images/shinhancard2.png';
 import creditcard from '~assets/images/creditcard.png';
 import MoveBackButton from '~components/MoveBackButton';
+import { useParams } from 'react-router-dom';
+
+import data from '~assets/data/data.json';
+import { differenceInDays, format } from 'date-fns';
+import { useRecoilValue } from 'recoil';
+import { FilterState } from '~store/FilterState';
 
 const TopBar = styled.div`
   display: flex;
@@ -91,18 +97,21 @@ const CustomSheet = styled(Sheet)`
 const ConfirmOrderPage = () => {
   const [isOpen, setOpen] = useState(false);
   const modalPointRef = useRef(null);
+  const { id } = useParams();
+  const article = data.items.find(item => item.id === Number(id))!;
+  const filters = useRecoilValue(FilterState);
   return (
     <>
       <TopBar>
         <MoveBackButton />
       </TopBar>
       <Title ref={modalPointRef}>Confirm Trip</Title>
-      <TripTitle>Oksun&apos;s House</TripTitle>
+      <TripTitle>{article.first_name}&apos;s House</TripTitle>
       <Item>
-        Schedule: <u>2023.08.20 - 2023.09.20 / 30 nights</u>
+        Schedule: <u>{format(filters.range_from, 'yyyy. MM. dd')} - {format(filters.range_to, 'yyyy. MM. dd')} / {differenceInDays(filters.range_to, filters.range_from)} nights</u>
       </Item>
       <Item>Breakfast: Seaweed soup served every morning</Item>
-      <Item>Total Amount: 450,000 won (15,000 won per night)</Item>
+      <Item>Total Amount: {(differenceInDays(filters.range_to, filters.range_from) * 15000).toLocaleString()} won (15,000 won per night)</Item>
       <Caution>
         Cancellation and Refund Policy
         <br />
@@ -117,10 +126,10 @@ const ConfirmOrderPage = () => {
         total price
       </Caution>
       <CustomSheet
-       isOpen={isOpen} 
-       onClose={() => setOpen(false)} 
-       mountPoint={modalPointRef.current !== null ? modalPointRef.current : document.body}
-       snapPoints={[400, 0]}
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        mountPoint={modalPointRef.current !== null ? modalPointRef.current : document.body}
+        snapPoints={[400, 0]}
       >
         <Sheet.Container>
           <Sheet.Header />
@@ -129,12 +138,12 @@ const ConfirmOrderPage = () => {
             <PaymentTitle>Payment</PaymentTitle>
             <PaymentMethod >
               <img src={dongbaekjeon} alt="dongbaekjeon" />
-              <Won>427,500 WON</Won>
+              <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000 * 0.95).toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentMethod >
               <img src={shinhancard} alt="shinhancard" />
-              <Won>450,000 WON</Won>
+              <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000).toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentTitle>New Payment Method</PaymentTitle>
@@ -144,7 +153,7 @@ const ConfirmOrderPage = () => {
               {/* <Won>427,500 WON</Won> */}
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
-            
+
           </Sheet.Content>
         </Sheet.Container>
         <Sheet.Backdrop />

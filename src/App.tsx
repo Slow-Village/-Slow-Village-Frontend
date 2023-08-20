@@ -1,6 +1,7 @@
 import { Global, ThemeProvider } from '@emotion/react';
 import { RouterProvider } from 'react-router-dom';
-import {RecoilRoot} from "recoil";
+import { RecoilRoot, useRecoilState } from "recoil";
+import { useEffect } from 'react';
 import globalStyles from '~styles/globalStyles';
 
 import router from './router';
@@ -13,8 +14,8 @@ const App = () => {
   return (
     <ThemeProvider theme={{}}>
       <RecoilRoot>
-      <RouterProvider router={router} />
-      <Global styles={globalStyles} />
+        <RouterProvider router={router} />
+        <Global styles={globalStyles} />
       </RecoilRoot>
     </ThemeProvider>
   );

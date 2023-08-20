@@ -2,11 +2,14 @@
     "items": [
         {
             "id": 1,
-            "title": "I have a dream too",
+            "title": "I have a",
+            "title2": "dream too",
             "address": "Jung-gu",
             "first_name": "Youngsook",
             "last_name": "Kim",
-            "image": "images/1-1.png",
+            "headcount": 2,
+            "title_image": "images/dummy/1-card.png",
+            "image": "images/dummy/1-1.png",
             "contents": [
                 {
                     "type": "text",
@@ -14,7 +17,7 @@
                 },
                 {
                     "type": "image",
-                    "content": "images/1-2.png"
+                    "content": "images/dummy/1-2.png"
                 },
                 {
                     "type": "text",
@@ -27,15 +30,38 @@
                 "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
                 "The bathroom features a bidet, and a washing machine is also provided."
             ],
-            "reviews": []
+            "reviews": [
+                {
+                    "title": "Knitting lecture,\nunusual memorie",
+                    "sub_title": "New Unique Experience Knitting",
+                    "url": "images/dummy/1-rev-1.png",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": "Kim Young-sook's one-on-one knitting lecture was a unique experience.\nI've tried knitting with my mom when I was young, but I don't remember much. I've always been curious and it seemed fun, but I don't think I ever had a chance.Kim Young-sook's grandmother's house is full of knitted products. All of this is my grandmother's work.My grandmother used to be a haenyeo, but after retiring, she says she is working in the knitting business as a new dream."
+                        },
+                        {
+                            "type": "image",
+                            "content": "images/dummy/1-rev-2.png"
+                        },
+                        {
+                            "type": "text",
+                            "content": "Thanks to you, I had a free knitting experience. It was difficult, but it was so much fun."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 2,
-            "title": "Lived in Busan for 50 years",
+            "title": "Lived in Busan",
+            "title2": "for 50 years",
             "address": "Namchun-dong",
             "first_name": "Oksun",
             "last_name": "Kim",
-            "image": "images/2-1.png",
+            "headcount": 3,
+            "title_image": "images/dummy/2-card.png",
+            "image": "images/dummy/2-1.png",
             "contents": [
                 {
                     "type": "text",
@@ -43,7 +69,7 @@
                 },
                 {
                     "type": "image",
-                    "content": "images/2-2.png"
+                    "content": "images/dummy/2-2.png"
                 },
                 {
                     "type": "text",
@@ -56,15 +82,30 @@
                 "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
                 "The bathroom features a bidet, and a washing machine is also provided."
             ],
-            "reviews": []
+            "reviews": [
+                {
+                    "title": "Cherry blossom road\nin front of the house",
+                    "sub_title": "Grandma's house full of spring scents",
+                    "url": "images/dummy/2-rev-1.png",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": "I visited Kim Ok-soon's grandmother's house in the spring. Namcheon-dong is famous for cherry blossoms, so the area near Grandma's house is a cherry blossom road.\n\nWhen I always travel to Busan, hotels and Airbnb were all I had, but it was such a great experience that I felt like a local living in Busan.\n\nI lived in Busan more affluently because I lived in harmony with the people who really lived in Busan and even heard stories of Busan from my grandmother, who lived there for more than a few decades."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 3,
-            "title": "At my house Let's eat pork soup",
+            "title": "At my house",
+            "title2": "Let's eat pork soup",
             "address": "Sinwol-dong",
             "first_name": "Sunja",
             "last_name": "Song",
-            "image": "images/3-1.png",
+            "headcount": 4,
+            "title_image": "images/dummy/3-card.png",
+            "image": "images/dummy/3-1.png",
             "contents": [
                 {
                     "type": "text",
@@ -72,7 +113,7 @@
                 },
                 {
                     "type": "image",
-                    "content": "images/3-2.png"
+                    "content": "images/dummy/3-2.png"
                 },
                 {
                     "type": "text",
@@ -85,15 +126,30 @@
                 "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
                 "The bathroom features a bidet, and a washing machine is also provided."
             ],
-            "reviews": []
+            "reviews": [
+                {
+                    "title": "Best Breakfast,\nLovely Gradma House",
+                    "sub_title": "pleasant morning time",
+                    "url": "images/dummy/3-rev-1.png",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": "I didn't know how long I remembered eating breakfast, but thanks to Grandma Sunja, I was able to miss and remember the taste of her hand.\nEvery morning, they wake us up and greet us with various side dishes and soups, which makes us feel good.\nGrandma has a lot of affection and is very cute. When I heard the story of Busan from my grandmother, I didn't know how time passed.\nWhile living at my grandmother's house, I went to a soup restaurant recommended by her and ate her soup, and it was a really different experience."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 4,
-            "title": "Gukbap master Lee Yeong-soon",
+            "title": "Gukbap master",
+            "title2": "Lee Yeong-soon",
             "address": "Seo-gu",
             "first_name": "Yeongsoon",
             "last_name": "Lee",
-            "image": "images/4-1.png",
+            "headcount": 2,
+            "title_image": "images/dummy/4-card.png",
+            "image": "images/dummy/4-1.png",
             "contents": [
                 {
                     "type": "text",
@@ -101,7 +157,7 @@
                 },
                 {
                     "type": "image",
-                    "content": "images/4-2.png"
+                    "content": "images/dummy/4-2.png"
                 },
                 {
                     "type": "text",
@@ -114,23 +170,46 @@
                 "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
                 "The bathroom features a bidet, and a washing machine is also provided."
             ],
-            "reviews": []
+            "reviews": [
+                {
+                    "title": "Best Taste,\nBest Gift",
+                    "sub_title": "Deep taste, warm affection",
+                    "url": "images/dummy/4-rev-1.png",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": "Grandma's rice soup is truly a culinary masterpiece that goes beyond its delightful flavors. With every spoonful, I was transported to a world of comfort and nostalgia, where the essence of her love and kindness enveloped me. The soup itself was a harmonious blend of ingredients, each playing a part in creating a symphony of taste that left me craving for more.\nWhat truly made Grandma's rice soup stand out, however, was the love and kindness that she poured into every pot. It wasn't just a meal; it was a gesture of warmth and care that emanated from her heart. Her kitchen felt like a haven, a place where stories were shared, laughter echoed, and souls were nourished as much as the body. Her rice soup was a reflection of her character - gentle, nurturing, and filled with the wisdom of years gone by. With each bite, I could taste the legacy of generations, a reminder of the simple pleasures that connect us to our roots. It wasn't just a bowl of soup; it was a taste of her history and the values she held dear."
+                        },
+                        {
+                            "type": "image",
+                            "content": "images/dummy/4-rev-2.png"
+                        },
+                        {
+                            "type": "text",
+                            "content": "Grandma's kindness extended beyond the kitchen, leaving an indelible mark on everyone fortunate enough to experience her rice soup. Her generosity knew no bounds, and it was evident in the way she lovingly served each bowl, ensuring that not only our hunger but our spirits were satiated.\n\nIn a world that often rushes by, Grandma's rice soup was a reminder of the beauty of slowing down, of savoring the moment and cherishing the bonds that tie us together. Her kindness, mirrored in the deliciousness of her soup, left an everlasting impression on my heart. It's more than a meal - it's a testament to the power of love, kindness, and the magic that happens when they are combined in a single bowl. Really recommend. Use it a lot. I have a return visit doctor. thank you again grandma"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 5,
-            "title": "Busan is very good welcome",
+            "title": "Busan is",
+            "title2": "very good welcome",
             "address": "Seo-gu",
             "first_name": "Chungja",
             "last_name": "Park",
-            "image": "images/5-1.png",
+            "headcount": 4,
+            "title_image": "images/dummy/5-card.png",
+            "image": "images/dummy/5-1.png",
             "contents": [
                 {
                     "type": "text",
-                    "content": "\"Busan\" by Park Chung-ja is a poignant tale that captures the essence of a coastal city's transformative journey. Set against the backdrop of Busan, a bustling port city in South Korea, the story unfolds through the eyes of its diverse inhabitants.\nIn the midst of bustling markets and towering ships, Park Chung-ja weaves a tapestry of characters who embody the spirit of Busan. From fishermen who brave the unpredictable sea to merchants who barter with shrewdness, each person represents a facet of the city's vibrant personality.\nAt the heart of the narrative is Sunwoo, a young boy born into a fishing family. His dreams are entwined with the ocean's tides, and his heart beats to the rhythm of the waves. As the story progresses, Sunwoo's journey mirrors the transformation of Busan itself – from a modest fishing village to a bustling metropolis.\nThe novel vividly portrays the evolution of Busan as it adapts to the changing currents of time. The once-quiet shores become a hub of industry and commerce, reflecting the city's rapid growth. Yet amidst the chaos, the narrative never loses sight of the human connections that define Busan's soul.\nAs characters intersect and paths intertwine, "Busan" delves into the themes of resilience, sacrifice, and the indomitable spirit of its people. Amid economic shifts and wartime challenges, the characters exemplify the unwavering determination to carve a better future for their families and community.\nThrough the ebbs and flows of life, "Busan" showcases how the city becomes more than just a backdrop – it becomes a living, breathing entity that shapes the destinies of its inhabitants. The city's physical transformation mirrors the personal growth of its characters, each one marked by triumphs and tribulations.\nPark Chung-ja's prose paints a vivid portrait of Busan's landscape, culture, and traditions. From the narrow alleys of the old city to the modern skyscrapers that pierce the sky, every detail is meticulously captured, providing readers with a sensory immersion into the heart of Busan."
+                    "content": "\"Busan\" by Park Chung-ja is a poignant tale that captures the essence of a coastal city's transformative journey. Set against the backdrop of Busan, a bustling port city in South Korea, the story unfolds through the eyes of its diverse inhabitants.\nIn the midst of bustling markets and towering ships, Park Chung-ja weaves a tapestry of characters who embody the spirit of Busan. From fishermen who brave the unpredictable sea to merchants who barter with shrewdness, each person represents a facet of the city's vibrant personality.\nAt the heart of the narrative is Sunwoo, a young boy born into a fishing family. His dreams are entwined with the ocean's tides, and his heart beats to the rhythm of the waves. As the story progresses, Sunwoo's journey mirrors the transformation of Busan itself – from a modest fishing village to a bustling metropolis.\nThe novel vividly portrays the evolution of Busan as it adapts to the changing currents of time. The once-quiet shores become a hub of industry and commerce, reflecting the city's rapid growth. Yet amidst the chaos, the narrative never loses sight of the human connections that define Busan's soul.\nAs characters intersect and paths intertwine, \"Busan\" delves into the themes of resilience, sacrifice, and the indomitable spirit of its people. Amid economic shifts and wartime challenges, the characters exemplify the unwavering determination to carve a better future for their families and community.\nThrough the ebbs and flows of life,\"Busan\" showcases how the city becomes more than just a backdrop – it becomes a living, breathing entity that shapes the destinies of its inhabitants. The city's physical transformation mirrors the personal growth of its characters, each one marked by triumphs and tribulations.\nPark Chung-ja's prose paints a vivid portrait of Busan's landscape, culture, and traditions. From the narrow alleys of the old city to the modern skyscrapers that pierce the sky, every detail is meticulously captured, providing readers with a sensory immersion into the heart of Busan."
                 },
                 {
                     "type": "image",
-                    "content": "images/5-2.png"
+                    "content": "images/dummy/5-2.png"
                 },
                 {
                     "type": "text",
@@ -143,7 +222,39 @@
                 "The rooms are equipped with essentials such as air conditioning, a desk, a bed, and Wi-Fi.",
                 "The bathroom features a bidet, and a washing machine is also provided."
             ],
-            "reviews": []
+            "reviews": [
+                {
+                    "title": "See you again grandma.\nI’ll bring my boyfriend next time.",
+                    "sub_title": "Grandmother's house filled with love",
+                    "url": "images/dummy/5-rev-1.png",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": "Our first meeting was on a sunny day. My grandmother welcomed me with a warm smile, and from that moment on, a corner of my heart was filled with warmth. The fragrant coffee times and cooking sessions we shared on early mornings were dazzlingly beautiful. The dishes created by my grandmother's touch were also uniquely delicious. Her secret ingredient was 'love'.\n\nThe time we spent together for a month was always filled with happiness. My grandmother shared stories ranging from her childhood to the most recent ones. During those moments, I felt as if time stood still, and I got lost in her stories. The warmth and experience in her eyes, which I could see, gave me great courage and strength.\nThe time we spent together for a month was always filled with happiness. My grandmother shared stories ranging from her childhood to the most recent ones. During those moments, I felt as if time stood still, and I got lost in her stories."
+                        },
+                        {
+                            "type": "image",
+                            "content": "images/dummy/5-rev-2.png"
+                        },
+                        {
+                            "type": "text",
+                            "content": "The time together always seemed to pass quickly. On the last day spent with my grandmother, I promised myself that I would forever remember this treasure-like time. The path we walked, holding my grandmother's hand, will remain a precious treasure in my heart."
+                        },
+                        {
+                            "type": "image",
+                            "content": "images/dummy/5-rev-3.png"
+                        },
+                        {
+                            "type": "image",
+                            "content": "images/dummy/5-rev-4.png"
+                        },
+                        {
+                            "type": "text",
+                            "content": "This past month was a meaningful time for me. The moments spent with my grandmother gave me great inspiration and love. Now, I want to share these memories with all of you through a blog post, to share all the emotions and gratitude. I will cherish this special month with my grandmother and strive to become a better person."
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
