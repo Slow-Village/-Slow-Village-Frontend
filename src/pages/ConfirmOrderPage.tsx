@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { differenceInDays, format } from 'date-fns';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import Sheet from 'react-modal-sheet';
-import { useNavigate, useNavigation, useParams } from 'react-router-dom';
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import data from '~assets/data/data.json';
 import creditcard from '~assets/images/creditcard.png';
@@ -42,13 +42,16 @@ const PaymentTitle = styled.h2`
   font-size: 14px;
   font-weight: 600;
   line-height: 16px;
-  margin: 24px 22px 0;
+  margin: 24px 22px 20px;
 `;
 
 const PaymentMethod = styled.div`
   display: flex;
-  margin: 20px 22px 8px;
+  margin: 4px 22px;
   align-items: center;
+  border-radius: 20px;
+  background: #f8f8f8;
+  padding: 16px 30px;
   img {
     margin-right: 16px;
   }
@@ -61,13 +64,6 @@ const Won = styled.div`
 const Text = styled.div`
   font-size: 13px;
   font-weight: 400;
-`;
-
-const Edit = styled.div`
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration-line: underline;
-  margin-left: auto;
 `;
 
 const Caution = styled.div`
@@ -110,7 +106,7 @@ const ConfirmOrderPage = () => {
       end_date: format(filters.range_to, 'yyyy.MM.dd'),
     });
     navigate('/profile', {
-      replace: true
+      replace: true,
     });
   };
 
@@ -154,7 +150,7 @@ const ConfirmOrderPage = () => {
         mountPoint={
           modalPointRef.current !== null ? modalPointRef.current : document.body
         }
-        snapPoints={[400, 0]}
+        snapPoints={[440, 0]}
       >
         <Sheet.Container>
           <Sheet.Header />
@@ -163,20 +159,16 @@ const ConfirmOrderPage = () => {
             <PaymentTitle>Payment</PaymentTitle>
             <PaymentMethod onClick={() => handleReservation()}>
               <img src={dongbaekjeon} alt="dongbaekjeon" />
-              <Won>{(price * 0.95).toLocaleString()} WON</Won>
-              {/* <Edit>Edit</Edit> */}
+              <Won>(-5%) {(price * 0.95).toLocaleString()} WON</Won>
             </PaymentMethod>
             <PaymentMethod onClick={() => handleReservation()}>
               <img src={shinhancard} alt="shinhancard" />
               <Won>{price.toLocaleString()} WON</Won>
-              {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
             <PaymentTitle>New Payment Method</PaymentTitle>
             <PaymentMethod>
               <img src={creditcard} alt="creditcard" />
               <Text>Add New Credit Card</Text>
-              {/* <Won>427,500 WON</Won> */}
-              {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
           </Sheet.Content>
         </Sheet.Container>
