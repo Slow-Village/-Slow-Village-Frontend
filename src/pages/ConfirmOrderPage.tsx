@@ -7,12 +7,13 @@ import dongbaekjeon from '~assets/images/dongbaekjeon.png';
 import shinhancard from '~assets/images/shinhancard2.png';
 import creditcard from '~assets/images/creditcard.png';
 import MoveBackButton from '~components/MoveBackButton';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import data from '~assets/data/data.json';
 import { differenceInDays, format } from 'date-fns';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import { FilterState } from '~store/FilterState';
+import { ReservationState } from '~store/ReservationState';
 
 const TopBar = styled.div`
   display: flex;
@@ -100,6 +101,19 @@ const ConfirmOrderPage = () => {
   const { id } = useParams();
   const article = data.items.find(item => item.id === Number(id))!;
   const filters = useRecoilValue(FilterState);
+  const setReservations = useSetRecoilState(ReservationState);
+  const navigate = useNavigate();
+
+  const handleReservation = () => {
+    setOpen(false);
+    setReservations({
+      id: Number(id),
+      start_date: format(filters.range_to, 'yyyy.MM.dd'),
+      end_date: format(filters.range_to, 'yyyy.MM.dd'),
+    })
+    navigate('/profile');
+  }
+
   return (
     <>
       <TopBar>
@@ -136,12 +150,14 @@ const ConfirmOrderPage = () => {
           <Sheet.Content>
             <TripTitle>450,000 WON</TripTitle>
             <PaymentTitle>Payment</PaymentTitle>
-            <PaymentMethod >
+            <PaymentMethod onClick={() => handleReservation()}>
               <img src={dongbaekjeon} alt="dongbaekjeon" />
               <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000 * 0.95).toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
             </PaymentMethod>
-            <PaymentMethod >
+            <PaymentMethod onClick={
+              () => handleReservation()
+            }>
               <img src={shinhancard} alt="shinhancard" />
               <Won>{(differenceInDays(filters.range_to, filters.range_from) * 15000).toLocaleString()} WON</Won>
               {/* <Edit>Edit</Edit> */}
@@ -158,7 +174,9 @@ const ConfirmOrderPage = () => {
         </Sheet.Container>
         <Sheet.Backdrop />
       </CustomSheet>
-      <Button onClick={() => setOpen(true)}>Confirm to Pay</Button>
+      <Button onClick={() => {
+        setOpen(true);
+      }}>Confirm to Pay</Button>
     </>
   );
 };

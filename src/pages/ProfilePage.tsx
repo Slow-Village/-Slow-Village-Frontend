@@ -8,6 +8,10 @@ import QuestionIcon from '~assets/icons/question.svg';
 import grandma_1_reservation from '~assets/images/grandma_1_reservation.png';
 import MoveBackButton from '~components/MoveBackButton';
 
+import data from '~assets/data/data.json';
+import { useRecoilValue } from 'recoil';
+import { ReservationState } from '~store/ReservationState';
+
 const TopBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -71,24 +75,38 @@ const SettingItem = styled.div`
   }
 `;
 
+const None = styled.div`
+  margin: 0 22px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+`;
+
 const ProfilePage = () => {
+  const reservation = useRecoilValue(ReservationState);
+  const reservedArticle = reservation && data.items.find(item => item.id === reservation.id)!;
   return (
     <>
       <TopBar>
         <MoveBackButton />
       </TopBar>
       <Title>My Trip</Title>
-      <Card>
-        <img src={grandma_1_reservation} alt="grandma_1_reservation" />
+      {
+        !reservedArticle && (
+          <None>None</None>
+        )
+      }
+      {reservedArticle && (<Card>
+        <img src={import.meta.env.BASE_URL + '/' + reservedArticle.image} alt={reservedArticle.image} />
         <CardContent>
           <CardContentVertical>
-            <CardTitle>Oksun’s House</CardTitle>
-            <CardDescription>2023.08.20-2023.09.20</CardDescription>
-            <CardDescription>Busan Suyeong-gu</CardDescription>
+            <CardTitle>{reservedArticle.first_name}’s House</CardTitle>
+            <CardDescription>{reservation.start_date} - {reservation.end_date}</CardDescription>
+            <CardDescription>{reservedArticle.address}, Busan</CardDescription>
           </CardContentVertical>
           <PhoneIcon />
         </CardContent>
-      </Card>
+      </Card>)}
       <Title>Setting</Title>
       <SettingItem>
         <ProfileIcon />
