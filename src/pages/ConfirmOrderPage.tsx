@@ -109,7 +109,9 @@ const ConfirmOrderPage = () => {
       start_date: format(filters.range_to, 'yyyy.MM.dd'),
       end_date: format(filters.range_to, 'yyyy.MM.dd'),
     });
-    navigate('/profile');
+    navigate('/profile', {
+      replace: true
+    });
   };
 
   const days = differenceInDays(filters.range_to, filters.range_from);
